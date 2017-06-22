@@ -1,8 +1,10 @@
 page-login {
- 
+
+  .login-background{
+      background-image : url("../assets/images/loginPage.jpg");
+  }
   .login-content {
-    background: #9f9f9f;
- 
+
     .logo-row {
       padding-top: 50px;
       padding-bottom: 20px;
@@ -14,19 +16,22 @@ page-login {
       background: white;
       padding: 15px;
     }
- 
+
     .login-box {
-      background: #cacaca;
+      background: white;
       border-radius: 30px;
-      padding: 20px 20px 0px 20px;
-      margin-top: 30px;
+      position: absolute;
+      bottom:  60px;
+      left : 5%;
+      right :5%;
+
     }
- 
+
     ion-row {
        align-items: center;
        text-align: center;
      }
- 
+
      ion-item {
          border-radius: 10px !important;
          padding-left: 10px !important;
@@ -36,30 +41,38 @@ page-login {
          border-bottom: 0px !important;
          box-shadow: none !important;
      }
- 
      .signup-col {
-       margin: 0px 16px 0px 16px;
-       padding-bottom: 20px;
+       border-radius: 30px;
+       position: absolute;
+       bottom:  5px;
+       left : 5%;
+       right : 5%;
+       width : auto;
      }
- 
+
      .item-inner {
        border-bottom-color: #ffffff !important;
        box-shadow: none !important;
      }
- 
-     .submit-btn {  
+
+     .submit-btn {
        background: #f474a2;
        border: 1px solid #ffffff;
+       border-radius: 30px;
      }
- 
-     .submit-btn:hover {  
+
+     .submit-btn:hover {
        background: #4f4f4f;
      }
- 
+
      .register-btn {
        color: #ffffff;
        font-size: 0.8em;
      }
+     .border-bottom{
+       background: transparent;
+       border-bottom: 1px solid #999;
+     }
   }
- 
+
 }
