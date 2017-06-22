@@ -11,20 +11,22 @@
 
   <ion-card *ngFor="let item of items" >
     <ion-list  (click)="itemTapped($event, item)">
-     <div style="float : left; display: flex; align-items: center;">
-      <img src={{item.photo}} style="width : 52px"/>
+     <div style="float : left">
+      <img src={{item.photo}} style="width : 62px"/>
      </div>
-              <div>
-               <div style="text-align : right">
-                  {{item.distributor}}
-               </div>
-                <div style="text-align : right">
-                  {{item.address}}
-                </div>
-                <div style="text-align : right">
-                  {{item.postalCode + item.city}}
-                </div>
-              </div>
+     <div>
+      <div style="padding:5px">
+       <div style="text-align : right">
+          {{item.distributor}}
+       </div>
+        <div style="text-align : right">
+          {{item.address}}
+        </div>
+        <div style="text-align : right">
+          {{item.postalCode + item.city}}
+        </div>
+      </div>
+    </div>
     </ion-list>
   </ion-card>
 </ion-content>
