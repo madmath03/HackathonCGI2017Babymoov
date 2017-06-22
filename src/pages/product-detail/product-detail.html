@@ -1,14 +1,41 @@
-<ion-title>
-    {{selectedItem ? selectedItem.description : 'Produit'}}
+<ion-content *ngIf="selectedItem" padding>
+    <ion-title>
+        {{selectedItem.description}}
 
-    <ion-fab top right>
-        <button ion-fab (click)="closeModal()">
+        <ion-fab top right>
+            <button ion-fab (click)="closeModal()">
               <ion-icon name="close"></ion-icon>
             </button>
-    </ion-fab>
-</ion-title>
+        </ion-fab>
+    </ion-title>
 
+    <form (ngSubmit)="validate()" #productForm="ngForm">
+        <ion-row>
+            <div class="login-box">
 
-<ion-content *ngIf="selectedItem" padding>
+                <ion-item>
+                    <ion-label>Prix recommandé</ion-label>
+                    <ion-label>{{ selectedItem.recommendedPrice }}</ion-label>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>Prix de vente</ion-label>
+                    <ion-input class="border-bottom" type="number" name="actualPrice" [(ngModel)]="selectedItem.actualPrice" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>Quantité</ion-label>
+                    <ion-input class="border-bottom" type="number" name="quantity" [(ngModel)]="selectedItem.quantity" required></ion-input>
+                </ion-item>
+            </div>
+        </ion-row>
+
+        <ion-row>
+            <ion-col class="validate-col">
+                <button ion-button class="validate-btn" full type="submit" [disabled]="!productForm.form.valid">Valider</button>
+            </ion-col>
+        </ion-row>
+
+    </form>
 
 </ion-content>
