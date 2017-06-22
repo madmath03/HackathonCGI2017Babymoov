@@ -1,12 +1,12 @@
 [
     {
-        "distributor": "Maxi Toys",
+        "distributor": "Aubert",
         "lattitude": "14.1225121",
         "longitude": "54.236522",
-        "address": "116 Boulevard Gustave Flaubert,",
-        "city": "Clermont-Ferrand",
-        "postalCode": "63000",
-        "photo": "http://www.cap-malo.com/sites/cap-malo.com/files/maxitoys.jpg",
+        "address": "Rue pontel,",
+        "city": "Lempdes",
+        "postalCode": "63370",
+        "photo": "http://s3-eu-central-1.amazonaws.com/tout-stmax/aubert-saint-maximin1-300x300.jpg",
         "product": [
             {
                 "ref": "A001117",
@@ -204,7 +204,7 @@
         "address": "10 rue chazots",
         "city": "Aubière",
         "postalCode": "63170",
-        "photo": "http://actu.meilleurmobile.com/wp-content/uploads/2015/12/logo-boulanger.png",
+        "photo": "http://www.laptopspirit.fr/wp-content/uploads/new/logo-boulanger1.jpg",
         "product": [
             {
                 "ref": "A001117",
@@ -287,7 +287,7 @@
         "address": "Boulevard Saint-Jean",
         "city": "Clermont-Ferrand",
         "postalCode": "63100",
-        "photo": "http://www.lsa-conso.fr/mediatheque/6/0/0/000009006.jpg",
+        "photo": "https://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0024/9378/brand.gif?itok=Sv5Tu0Vr",
         "product": [
             {
                 "ref": "A001117",

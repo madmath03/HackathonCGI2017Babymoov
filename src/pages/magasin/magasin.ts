@@ -13,7 +13,7 @@ export class MagasinPage {
   selectedItem: any;
   posOptionsLat: any;
   posOptionsLong: any;
-  items: Array<{ distributor: string, note: string, icon: string }>;
+  items: Array<{ distributor: string, address: string, city: string, postalCode: string}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private _http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -96,7 +96,7 @@ export class MagasinPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.distributor.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.distributor.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.address.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.city.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.postalCode.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }else if(val == ''){
       this.items = this.loadAllMagasins();
