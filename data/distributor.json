@@ -1,0 +1,17 @@
+[{distributor : "Maxi Toys",
+    lattitude :"14.1225121",
+    longitude :"54.236522",
+    address :"116 Boulevard Gustave Flaubert,",
+    city : "Clermont-Ferrand",
+    postalCode : "63000",
+    photo : "http://www.cap-malo.com/sites/cap-malo.com/files/maxitoys.jpg"
+},{distributor : "Darty",
+    lattitude :"14.1225121",
+    longitude :"54.236522",
+    address :"Zone La Pardieu, Rue de l'Hermitage",
+    city : "Clermont-Ferrand",
+    postalCode : "63000",
+    photo : "http://www.darty.com/static/Qzls/desktop2/common/images/darty_sprite/sprite_darty_logo.png"
+}
+
+]
