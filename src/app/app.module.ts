@@ -12,6 +12,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { ProductPage } from '../pages/product/product';
+import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { MagasinPage } from '../pages/magasin/magasin';
 
 import { AuthService } from '../providers/auth-service';
@@ -24,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     LoginPage,
     ProductPage,
+    ProductDetailPage,
     MagasinPage
   ],
   imports: [
@@ -37,6 +39,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     LoginPage,
     ProductPage,
+    ProductDetailPage,
     MagasinPage
   ],
   providers: [

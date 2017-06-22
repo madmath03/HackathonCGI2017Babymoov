@@ -11,7 +11,6 @@ import { ProductPage } from '../product/product';
 })
 export class MagasinPage {
   selectedItem: any;
-  icons: string[];
   posOptionsLat: any;
   posOptionsLong: any;
   items: Array<{ title: string, note: string, icon: string }>;
