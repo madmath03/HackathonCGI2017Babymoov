@@ -11,6 +11,8 @@ declare var google;
   templateUrl: 'map.html'
 })
 export class MapPage {
+  posOptionsLat: number;
+  posOptionsLong: number;
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
@@ -19,9 +21,9 @@ export class MapPage {
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
 
-  constructor(public navCtrl: NavController,private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, private geolocation: Geolocation) {
 
-  	// get current position
+    // get current position
     geolocation.getCurrentPosition().then(pos => {
       this.posOptionsLat = pos.coords.latitude;
       this.posOptionsLong = pos.coords.longitude;
@@ -39,14 +41,14 @@ export class MapPage {
 
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     this.initMap();
   }
 
   initMap() {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
       zoom: 7,
-      center: {lat: 41.85, lng: -87.65}
+      center: { lat: 41.85, lng: -87.65 }
     });
 
     this.directionsDisplay.setMap(this.map);
