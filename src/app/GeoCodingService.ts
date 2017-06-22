@@ -10,7 +10,7 @@ export class GeoCodingService {
     });
 
   }
-
+/*
   public geocodeAddress(): Promise<google.maps.GeocoderResult[]> {
     const request: google.maps.GeocoderRequest = {
       address: '1600 Amphitheatre Parkway, Mountain View, CA'
@@ -29,8 +29,9 @@ export class GeoCodingService {
     });
 
   }
+  */
 }
-
+/*
   // USAGE
 new GeoCodingService().geocodeAddress().then((results) => {
   console.log('results', results);
@@ -48,3 +49,4 @@ new GeoCodingService().geocodeAddress().then((results) => {
 
   
 });
+*/
