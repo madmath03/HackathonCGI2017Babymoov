@@ -1,3 +1,4 @@
+import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -8,30 +9,28 @@ import { NavController, NavParams } from 'ionic-angular';
 export class MagasinPage {
   selectedItem: any;
   icons: string[];
+  posOptionsLat: any;
+  posOptionsLong: any;
   items: Array<{title: string, note: string, icon: string}>;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+   
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+      // get current position
+      geolocation.getCurrentPosition().then(pos => {
+        this.posOptionsLat = pos.coords.latitude;
+        this.posOptionsLong = pos.coords.longitude;
+        console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
       });
-    }
-  }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(MagasinPage, {
-      item: item
-    });
+      const watch = geolocation.watchPosition().subscribe(pos => {
+        this.posOptionsLat = pos.coords.latitude;
+        this.posOptionsLong = pos.coords.longitude;
+        console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+      });
+
+      // to stop watching
+      watch.unsubscribe();
   }
 }
