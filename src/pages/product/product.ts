@@ -17,6 +17,7 @@ export class ProductPage {
   selectedItem: any;
   icons: string[];
   items: Array<{ title: string, note: string, icon: string }>;
+  currentDistributor: string = 'Maxi Toys';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _barcodeScanner: BarcodeScanner, private _http: Http) {
@@ -40,29 +41,28 @@ export class ProductPage {
   loadProducts() {
     var items = [];
 
-    // TODO Get items for client from API
     this._http.get('assets/data/distributor.json')
       .map(res => res.json())
       .subscribe(
-        data => {
-          console.log(JSON.stringify(data));
-          data.forEach((user) => {
-            items.push(
-            );
-          });
-        },
-        err => this.handleErrors(err),
-        () => console.log('WTF!!')
+      data => {
+        console.log(JSON.stringify(data));
+        data.forEach((item) => {
+          if (item.distributor === this.currentDistributor) {
+            for (let product of item.product) {
+              items.push({
+                title: product.description,
+                note: product.recommendedPrice,
+                icon: ''
+              }
+              );
+            }
+          }
+        });
+      },
+      err => this.handleErrors(err),
+      () => console.log('Products load ended.')
       );
-    /*
-        for (let i = 1; i < 11; i++) {
-          items.push({
-            title: 'Item ' + i,
-            note: 'This is item #' + i,
-            icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-          });
-        }
-    */
+
     return items;
   }
 
