@@ -47,15 +47,8 @@ export class ProductPage {
         .subscribe(
         data => {
           data.forEach((item) => {
-            items.push({
-              title: item.description,
-              ref: item.ref,
-              rating: item.starRating,
-              note: item.recommendedPrice,
-              found: false,
-              barcode: item.barcode,
-              photo: item.photo
-            });
+          item.found = false;
+            items.push(item);
           });
         },
         err => this.handleErrors(err),
@@ -79,7 +72,7 @@ export class ProductPage {
           });
           items.sort(function(a, b){
             if (a.found == b.found)
-              return b.rating - a.rating
+              return b.starRating - a.starRating
             if (a.found){
               return -1
             }

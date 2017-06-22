@@ -10,20 +10,29 @@
 
   <ion-card *ngFor="let item of items" >
     <ion-list>
-      <ion-card-header style=" display: flex; align-items: center;" (click)="itemTapped($event, item)">
-        <div style="float : left"><img src={{item.photo}} style="width : 50px; margin : 10px"/></div>
-        <span>  {{item.distributor}}</span>
-
-      </ion-card-header>
       <ion-card-content ion-item  (click)="itemTapped($event, item)">
-        <div style="float : right">
-          <div style="float : right">
-            {{item.address}}
-          </div>
-          <div style="float : right">
-            {{item.postalCode + item.city}}
-          </div>
-        </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="display: flex; align-items: center;">
+           <div style="float : left">
+             <img src={{item.photo}} style="width : 50px"/>
+           </div>
+          </ion-col>
+          <ion-col>
+              <div>
+               <div style="text-align : right">
+                  {{item.distributor}}
+               </div>
+                <div style="text-align : right">
+                  {{item.address}}
+                </div>
+                <div style="text-align : right">
+                  {{item.postalCode + item.city}}
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-card-content>
     </ion-list>
   </ion-card>
