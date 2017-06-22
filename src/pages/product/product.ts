@@ -14,19 +14,14 @@ import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner
   templateUrl: 'product.html'
 })
 export class ProductPage {
-  selectedItem: any;
+  selectedItem: any = null;
   icons: string[];
   items: Array<{ title: string, note: string, found: boolean, barcode: string }>;
-  currentDistributor: string = 'Maxi Toys';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _barcodeScanner: BarcodeScanner, private _http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-      'american-football', 'boat', 'bluetooth', 'build'];
 
     this.items = this.loadProducts();
   }
@@ -44,31 +39,66 @@ export class ProductPage {
   loadProducts() {
     var items = [];
 
-    this._http.get('assets/data/distributor.json')
-      .map(res => res.json())
-      .subscribe(
-      data => {
-        console.log(JSON.stringify(data));
-        data.forEach((item) => {
-          if (item.distributor === this.currentDistributor) {
-            for (let product of item.product) {
-              items.push({
-                title: product.description,
-                ref : product.ref,
-                rating : product.starRating,
-                note: product.recommendedPrice,
-                found: false,
-                barcode: product.barcode,
-                photo : product.photo
+    if (this.selectedItem == null) {
+
+      /*
+      console.log('Loading all products...');
+
+      this._http.get('assets/data/product.json')
+        .map(res => res.json())
+        .subscribe(
+        data => {
+          data.forEach((item) => {
+            if (item.distributor === this.selectedItem.title) {
+              for (let product of item.product) {
+                items.push({
+                  title: product.description,
+                  ref: product.ref,
+                  rating: product.starRating,
+                  note: product.recommendedPrice,
+                  found: false,
+                  barcode: product.barcode,
+                  photo: product.photo
+                }
+                );
               }
-              );
             }
-          }
-        });
-      },
-      err => this.handleErrors(err),
-      () => console.log('Products load ended.')
-      );
+          });
+        },
+        err => this.handleErrors(err),
+        () => console.log('Products load ended.')
+        );
+
+*/
+    } else {
+      console.log('Loading products for ' + this.selectedItem.title + '...');
+
+      this._http.get('assets/data/distributor.json')
+        .map(res => res.json())
+        .subscribe(
+        data => {
+          data.forEach((item) => {
+            if (item.distributor === this.selectedItem.title) {
+              for (let product of item.product) {
+                items.push({
+                  title: product.description,
+                  ref: product.ref,
+                  rating: product.starRating,
+                  note: product.recommendedPrice,
+                  found: false,
+                  barcode: product.barcode,
+                  photo: product.photo
+                }
+                );
+              }
+            }
+          });
+        },
+        err => this.handleErrors(err),
+        () => console.log('Products load ended.')
+        );
+
+    }
 
     return items;
   }
@@ -114,7 +144,7 @@ export class ProductPage {
           alert('Référence produit "' + product.title + '" inconnue!');
         }
       } else {
-          console.log('No product found.');
+        console.log('No product found.');
       }
     }, (err) => {
       // An error occurred

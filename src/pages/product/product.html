@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar >
     <img src="assets/images/logo-babymoov.jpg" style="height : 50px"/>
-    <ion-title>{{ 'Produits ' + currentDistributor }}</ion-title>
+    <ion-title>{{ selectedItem == null ? 'Produits' : selectedItem.title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -30,8 +30,4 @@
       </div>
     </button>
   </ion-list>
-
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>
