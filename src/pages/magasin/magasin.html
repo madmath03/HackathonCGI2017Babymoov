@@ -4,18 +4,16 @@
 </ion-header>
 
 <ion-content>
-<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+        <div id="map" data-tap-disabled="true"></div>
+
+
+
   <ion-card *ngFor="let item of items" >
-    <ion-list>
-      <ion-card-content ion-item  (click)="itemTapped($event, item)">
-      <ion-grid>
-        <ion-row>
-          <ion-col style="display: flex; align-items: center;">
-           <div style="float : left">
-             <img src={{item.photo}} style="width : 50px"/>
-           </div>
-          </ion-col>
-          <ion-col>
+    <ion-list  (click)="itemTapped($event, item)">
+     <div style="float : left; display: flex; align-items: center;">
+      <img src={{item.photo}} style="width : 52px"/>
+     </div>
               <div>
                <div style="text-align : right">
                   {{item.distributor}}
@@ -27,15 +25,6 @@
                   {{item.postalCode + item.city}}
                 </div>
               </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-card-content>
     </ion-list>
   </ion-card>
-<div padding>
-    You are here<br>
-    Longitude <b>{{posOptionsLong}}</b> <br>
-    Lattitude <b>{{posOptionsLat}}</b>
-  </div>
 </ion-content>
