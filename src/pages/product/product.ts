@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
+import { Http, Response } from "@angular/http";
 import { NavController, NavParams } from 'ionic-angular';
+
+import 'rxjs/Rx';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
 
@@ -13,7 +19,7 @@ export class ProductPage {
   items: Array<{ title: string, note: string, icon: string }>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private _barcodeScanner: BarcodeScanner) {
+    private _barcodeScanner: BarcodeScanner, private _http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -21,7 +27,6 @@ export class ProductPage {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
       'american-football', 'boat', 'bluetooth', 'build'];
 
-    // TODO Get items for client from API
     this.items = this.loadProducts();
   }
 
@@ -34,15 +39,30 @@ export class ProductPage {
 
   loadProducts() {
     var items = [];
-/*
-    for (let i = 1; i < 11; i++) {
-      items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
-*/
+
+    // TODO Get items for client from API
+    this._http.get('assets/data/distributor.json')
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          console.log(JSON.stringify(data));
+          data.forEach((user) => {
+            items.push(
+            );
+          });
+        },
+        err => this.handleErrors(err),
+        () => console.log('WTF!!')
+      );
+    /*
+        for (let i = 1; i < 11; i++) {
+          items.push({
+            title: 'Item ' + i,
+            note: 'This is item #' + i,
+            icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+          });
+        }
+    */
     return items;
   }
 
@@ -70,5 +90,13 @@ export class ProductPage {
       console.log(err);
       alert('Une erreur c\'est produite!');
     });
+  }
+
+  private handleErrors(error: Response) {
+    if (typeof error.json === 'function') {
+      console.log(JSON.stringify(error.json()));
+    } else {
+      console.dir(error);
+    }
   }
 }
