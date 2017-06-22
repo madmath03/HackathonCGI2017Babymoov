@@ -6,7 +6,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ProductPage } from '../pages/produit/produit';
+import { ProductPage } from '../pages/product/product';
 import { MagasinPage } from '../pages/magasin/magasin';
 
 import { StatusBar } from '@ionic-native/status-bar';

@@ -22,14 +22,7 @@ export class ProductPage {
       'american-football', 'boat', 'bluetooth', 'build'];
 
     // TODO Get items for client from API
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    this.items = this.loadProducts();
   }
 
   itemTapped(event, item) {
@@ -39,21 +32,35 @@ export class ProductPage {
     });
   }
 
-  findProduct(barcodeData : BarcodeScanResult) {
+  loadProducts() {
+    var items = [];
+/*
+    for (let i = 1; i < 11; i++) {
+      items.push({
+        title: 'Item ' + i,
+        note: 'This is item #' + i,
+        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+      });
+    }
+*/
+    return items;
+  }
+
+  findProduct(barcodeData: BarcodeScanResult) {
     return {
-          title: barcodeData.text,
-          note: '',
-          icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-        };
+      title: barcodeData.text,
+      note: '',
+      icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    };
   }
 
   scanProduct(event) {
-    this._barcodeScanner.scan().then((barcodeData : BarcodeScanResult) => {
+    this._barcodeScanner.scan().then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
       if (!barcodeData.cancelled) {
         console.log(barcodeData);
-        alert('Produit : '+barcodeData.text);
+        alert('Produit : ' + barcodeData.text);
         var product = this.findProduct(barcodeData);
         this.items.push(product);
       }
