@@ -4,10 +4,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-product',
+  templateUrl: 'product.html'
 })
-export class ListPage {
+export class ProductPage {
   selectedItem: any;
   icons: string[];
   items: Array<{ title: string, note: string, icon: string }>;
@@ -34,9 +34,17 @@ export class ListPage {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
+    this.navCtrl.push(ProductPage, {
       item: item
     });
+  }
+
+  findProduct(barcodeData : BarcodeScanResult) {
+    return {
+          title: barcodeData.text,
+          note: '',
+          icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+        };
   }
 
   scanProduct(event) {
@@ -46,11 +54,8 @@ export class ListPage {
       if (!barcodeData.cancelled) {
         console.log(barcodeData);
         alert('Produit : '+barcodeData.text);
-        this.items.push({
-          title: barcodeData.text,
-          note: '',
-          icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-        });
+        var product = this.findProduct(barcodeData);
+        this.items.push(product);
       }
     }, (err) => {
       // An error occurred
