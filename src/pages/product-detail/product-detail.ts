@@ -35,6 +35,7 @@ export class ProductDetailPage {
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+    console.log(this.selectedItem);
   }
 
   ionViewDidLoad() {
@@ -43,6 +44,10 @@ export class ProductDetailPage {
 
   closeModal() {
     this.viewCtrl.dismiss();
+  }
+
+  validate() {
+    this.viewCtrl.dismiss(this.selectedItem);
   }
 
 }

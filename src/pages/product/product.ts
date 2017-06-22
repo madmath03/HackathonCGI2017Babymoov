@@ -29,13 +29,20 @@ export class ProductPage {
   }
 
   itemTapped(event, item: Product) {
-    console.log('Item tapped: '+item.description);
-    this.presentProfileModal(item);
+    console.log('Item tapped: ' + item.description);
+    this.presentProductModal(item);
   }
 
-  presentProfileModal(item: Product) {
-    let profileModal = this._modalCtrl.create(ProductDetailPage, item);
-    profileModal.present();
+  presentProductModal(item: Product) {
+    let productModal = this._modalCtrl.create(ProductDetailPage, {
+      item: item
+    });
+
+    productModal.onDidDismiss(data => {
+      console.log(productModal);
+    });
+
+    productModal.present();
   }
 
   loadProducts() {
@@ -89,12 +96,12 @@ export class ProductPage {
     return items;
   }
 
-  findProduct(barcodeData: BarcodeScanResult) {
+  findProduct(barcodeData: BarcodeScanResult) : Product {
     if (barcodeData.cancelled) {
       return null;
     }
 
-    let product = null;
+    let product: Product = null;
     // Find product in distributor list
     for (var _i = 0; _i < this.items.length; _i++) {
       var item: Product = this.items[_i];
@@ -111,8 +118,13 @@ export class ProductPage {
       product = new Product(
         barcodeData.text, barcodeData.text
       );
+    } else if (product.starRating === 5) {
+      // If top product, edit
+      this.presentProductModal(product);
     }
+
     this.items.sort(this.sortProducts);
+
     return product;
   }
 
@@ -128,14 +140,14 @@ export class ProductPage {
     this._barcodeScanner.scan().then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
-      let product = this.findProduct(barcodeData);
+      let product: Product = this.findProduct(barcodeData);
       if (product) {
         if (product.found) {
-          console.log('Product ' + product.title + ' added.');
+          console.log('Product ' + product.description + ' added.');
         } else {
-          console.log('Unknown product ' + product.title);
+          console.log('Unknown product ' + product.description);
 
-          this.showMessage('Référence produit "' + product.title + '" inconnue!');
+          this.showMessage('Référence produit "' + product.description + '" inconnue!');
         }
       } else {
         console.log('No product found.');
