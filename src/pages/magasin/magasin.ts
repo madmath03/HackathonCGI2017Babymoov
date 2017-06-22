@@ -1,6 +1,7 @@
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Http, Response } from "@angular/http";
 
 @Component({
   selector: 'page-magasin',
@@ -12,7 +13,7 @@ export class MagasinPage {
   posOptionsLat: any;
   posOptionsLong: any;
   items: Array<{title: string, note: string, icon: string}>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private _http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
    
 
@@ -32,5 +33,48 @@ export class MagasinPage {
 
       // to stop watching
       watch.unsubscribe();
+
+      this.items = this.loadAllMagasins();
   }
+
+  loadAllMagasins() {
+    var items = [];
+
+    this._http.get('assets/data/distributor.json')
+      .map(res => res.json())
+      .subscribe(
+      data => {
+        console.log(JSON.stringify(data));
+        data.forEach((item) => {
+              items.push({
+                title: item.distributor,
+                note: item.address
+              }
+              );
+        });
+      },
+      err => this.handleErrors(err),
+      () => console.log('Products load ended.')
+      );
+
+    /*
+        for (let i = 1; i < 11; i++) {
+          items.push({
+            title: 'Item ' + i,
+            note: 'This is item #' + i,
+            icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+          });
+        }
+    */
+    return items;
+  }
+
+  private handleErrors(error: Response) {
+    if (typeof error.json === 'function') {
+      console.log(JSON.stringify(error.json()));
+    } else {
+      console.dir(error);
+    }
+  }
+
 }
