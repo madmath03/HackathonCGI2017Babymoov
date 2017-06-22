@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
-import { Ionic2RatingModule } from 'ionic2-rating';
+import { Ionic2Rating } from 'ionic2-rating';
 
 @Component({
   selector: 'page-product',
