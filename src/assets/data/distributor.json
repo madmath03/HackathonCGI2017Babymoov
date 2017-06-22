@@ -13,7 +13,7 @@
                 "description": "Nutribaby (+) loft white",
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 3,
                 "starRating": 5
             },
@@ -22,7 +22,7 @@
                 "description": "Nutribaby (+) industrial grey",
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 6,
                 "starRating": 5
             },
@@ -31,7 +31,7 @@
                 "description": "Coque Nutribaby (+) effet bois",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 0,
                 "starRating": 5
             },
@@ -40,7 +40,7 @@
                 "description": "Coque Nutribaby (+) effet alu brossé",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 2,
                 "starRating": 5
             },
@@ -49,7 +49,7 @@
                 "description": "Coque Nutribaby (+) effet cuivré",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -58,7 +58,7 @@
                 "description": "Coque Nutribaby (+) arctic blue",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -67,7 +67,7 @@
                 "description": "Coque Nutribaby (+) cherry",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 0,
                 "starRating": 5
             },
@@ -76,7 +76,7 @@
                 "description": "Nutribaby Cherry",
                 "photo": "http://www.lecoindespetits.com/12930-5865-thickbox/nutribaby-cerise.jpg",
                 "barcode": "3661276141889",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             },
             {
@@ -84,7 +84,7 @@
                 "description": "Nutribaby Cream",
                 "photo": "http://www.lecoindespetits.com/12931-5866-thickbox/nutribaby-cream.jpg",
                 "barcode": "3661276142138",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             },
             {
@@ -92,7 +92,7 @@
                 "description": "Nutribaby Taupe/Amande ",
                 "photo": "http://www.lecoindespetits.com/10166-827-large/nutribaby-debabymoov.jpg",
                 "barcode": "3661276007048",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -101,7 +101,7 @@
                 "description": " Stérilisateur T/V Cream",
                 "photo": "https://www.autourdebebe.com/medias/altpartnerssterilisateurtvcream-3661276143067-1BaseMedia-550Wx550H?context=bWFzdGVyfHJvb3R8MTU5ODV8aW1hZ2UvanBlZ3xoOWMvaDU2Lzg4NDE1MjMxMDE3MjYuanBnfGQxYTFmNGJiNWExZDg2Y2ZjMmQ5Y2EzYmI1YTc4YjZkMGRiNGI2ZDhhYmNhZmZkNzI2YjA5OTU3N2E4ZjMwYWQ",
                 "barcode": "3661276143067",
-                "recommendedPrice": "45,22",
+                "recommendedPrice": 45.22,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -110,7 +110,7 @@
                 "description": " Stérilisateur MO Cream",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276143890.jpg",
                 "barcode": "3661276143890",
-                "recommendedPrice": "15,28",
+                "recommendedPrice": 15.28,
                 "starRating": 3
             },
             {
@@ -118,7 +118,7 @@
                 "description": " Sèche biberon Cream",
                 "photo": "https://www.bilder.kids-comfort.info/Shop1000px/A006005-Seche-biberon-creme.jpg",
                 "barcode": "3661276143104",
-                "recommendedPrice": "9,48",
+                "recommendedPrice": 9.48,
                 "starRating": 3
             }
         ]
@@ -137,7 +137,7 @@
                 "description": "Nutribaby (+) loft white",
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -146,7 +146,7 @@
                 "description": "Nutribaby (+) industrial grey",
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 2,
                 "starRating": 5
             },
@@ -155,7 +155,7 @@
                 "description": "Coque Nutribaby (+) effet bois",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 5,
                 "starRating": 5
             },
@@ -164,7 +164,7 @@
                 "description": "Coque Nutribaby (+) effet alu brossé",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 10,
                 "starRating": 5
             },
@@ -173,7 +173,7 @@
                 "description": "Coque Nutribaby (+) effet cuivré",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 15,
                 "starRating": 5
             },
@@ -182,7 +182,7 @@
                 "description": "Coque Nutribaby (+) arctic blue",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 7,
                 "starRating": 5
             },
@@ -191,7 +191,7 @@
                 "description": "Coque Nutribaby (+) cherry",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 8,
                 "starRating": 5
             },
@@ -200,7 +200,7 @@
                 "description": "Nutribaby Cherry",
                 "photo": "http://www.lecoindespetits.com/12930-5865-thickbox/nutribaby-cerise.jpg",
                 "barcode": "3661276141889",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             },
             {
@@ -208,7 +208,7 @@
                 "description": "Nutribaby Cream",
                 "photo": "http://www.lecoindespetits.com/12931-5866-thickbox/nutribaby-cream.jpg",
                 "barcode": "3661276142138",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             }
         ]
@@ -227,7 +227,7 @@
                 "description": "Nutribaby (+) loft white",
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -236,7 +236,7 @@
                 "description": "Nutribaby (+) industrial grey",
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -245,7 +245,7 @@
                 "description": "Coque Nutribaby (+) effet bois",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -254,7 +254,7 @@
                 "description": "Coque Nutribaby (+) effet alu brossé",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -263,7 +263,7 @@
                 "description": "Coque Nutribaby (+) effet cuivré",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -272,7 +272,7 @@
                 "description": "Coque Nutribaby (+) arctic blue",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -281,7 +281,7 @@
                 "description": "Coque Nutribaby (+) cherry",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -290,7 +290,7 @@
                 "description": "Nutribaby Cherry",
                 "photo": "http://www.lecoindespetits.com/12930-5865-thickbox/nutribaby-cerise.jpg",
                 "barcode": "3661276141889",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             },
             {
@@ -298,7 +298,7 @@
                 "description": "Nutribaby Cream",
                 "photo": "http://www.lecoindespetits.com/12931-5866-thickbox/nutribaby-cream.jpg",
                 "barcode": "3661276142138",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             }
         ]
@@ -317,7 +317,7 @@
                 "description": "Nutribaby (+) loft white",
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -326,7 +326,7 @@
                 "description": "Nutribaby (+) industrial grey",
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
-                "recommendedPrice": "92,44",
+                "recommendedPrice": 92.44,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -335,7 +335,7 @@
                 "description": "Coque Nutribaby (+) effet bois",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -344,7 +344,7 @@
                 "description": "Coque Nutribaby (+) effet alu brossé",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -353,7 +353,7 @@
                 "description": "Coque Nutribaby (+) effet cuivré",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
-                "recommendedPrice": "16,89",
+                "recommendedPrice": 16.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -362,7 +362,7 @@
                 "description": "Coque Nutribaby (+) arctic blue",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -371,7 +371,7 @@
                 "description": "Coque Nutribaby (+) cherry",
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
-                "recommendedPrice": "10,89",
+                "recommendedPrice": 10.89,
                 "oldQty": 1,
                 "starRating": 5
             },
@@ -380,7 +380,7 @@
                 "description": "Nutribaby Cherry",
                 "photo": "http://www.lecoindespetits.com/12930-5865-thickbox/nutribaby-cerise.jpg",
                 "barcode": "3661276141889",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             },
             {
@@ -388,7 +388,7 @@
                 "description": "Nutribaby Cream",
                 "photo": "http://www.lecoindespetits.com/12931-5866-thickbox/nutribaby-cream.jpg",
                 "barcode": "3661276142138",
-                "recommendedPrice": "83,03",
+                "recommendedPrice": 83.03,
                 "starRating": 0
             }
         ]

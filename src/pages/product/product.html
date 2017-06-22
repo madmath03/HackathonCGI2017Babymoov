@@ -15,7 +15,7 @@
 
   <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }">
     <ion-list>
-        <div style="float : left; margin-top : 10px;margin-right : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
+        <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
         {{item.description}}
 
         <ion-fab top right>
@@ -25,18 +25,18 @@
         </ion-fab>
         <div style="padding-left:5px">
           <div class="item-note">
-            <span class="little" *ngIf="item.oldQty !=''">
-              Prix recommandé: {{item.recommendedPrice}} €
+            <span class="little" *ngIf="item.oldQty !=null">
+              Prix recommandé:<span [ngClass]="{'red' : (item.recommendedPriceP < item.actualPrice || item.recommendedPriceM > item.actualPrice) }"> {{item.recommendedPrice}} €</span>
             </span>
-            <span class="little" *ngIf="item.oldQty ==''">
+            <span class="little" *ngIf="item.oldQty ==null">
               &nbsp;
             </span>
           </div>
           <div class="item-note">
-              <span class="little" *ngIf="item.oldQty !=''">
-                Dernière quantité: {{item.oldQty}}
+              <span class="little" *ngIf="item.oldQty !=null">
+                Dernière quantité: <span [ngClass]="{'red' : item.oldQty == item.quantity && item.quantity == 0 }">{{item.oldQty}}</span>
               </span>
-              <span class="little" *ngIf="item.oldQty ==''">
+              <span class="little" *ngIf="item.oldQty ==null">
                 &nbsp;
               </span>
           </div>
