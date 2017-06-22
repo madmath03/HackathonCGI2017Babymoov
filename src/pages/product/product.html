@@ -6,7 +6,7 @@
   <ion-title>{{ selectedItem == null ? 'Produits' : selectedItem.title }}</ion-title>
 </ion-header>
 
-<ion-content>
+<ion-content class="grey">
   <ion-fab *ngIf="selectedItem" top right edge>
     <button ion-fab (click)="scanProduct($event)">
       <ion-icon name="camera"></ion-icon>
