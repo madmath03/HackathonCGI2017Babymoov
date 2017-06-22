@@ -6,6 +6,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Geolocation } from '@ionic-native/geolocation';
 
+// Import ionic2-rating module
+import { Ionic2RatingModule } from 'ionic2-rating';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProductPage } from '../pages/product/product';
@@ -25,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    Ionic2RatingModule 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
