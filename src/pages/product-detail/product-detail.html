@@ -1,0 +1,14 @@
+<ion-title>
+    {{selectedItem ? selectedItem.description : 'Produit'}}
+
+    <ion-fab top right>
+        <button ion-fab (click)="closeModal()">
+              <ion-icon name="close"></ion-icon>
+            </button>
+    </ion-fab>
+</ion-title>
+
+
+<ion-content *ngIf="selectedItem" padding>
+
+</ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Response } from "@angular/http";
-import { NavController, NavParams } from 'ionic-angular';
+import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/do';
@@ -9,16 +9,18 @@ import 'rxjs/add/operator/catch';
 
 import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
 
+import { Product, ProductDetailPage } from '../product-detail/product-detail';
+
 @Component({
   selector: 'page-product',
   templateUrl: 'product.html'
 })
 export class ProductPage {
   selectedItem: any = null;
-  icons: string[];
-  items: Array<{ title: string, note: string, found: boolean, barcode: string, rating: number }>;
+  items: Array<Product>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
+    private _alertCtrl: AlertController, private _modalCtrl: ModalController,
     private _barcodeScanner: BarcodeScanner, private _http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -26,14 +28,14 @@ export class ProductPage {
     this.items = this.loadProducts();
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    /*
-    this.navCtrl.push(ProductPage, {
-      item: item
-    });
-    */
-    //item.found = !item.found;
+  itemTapped(event, item: Product) {
+    console.log('Item tapped: '+item.description);
+    this.presentProfileModal(item);
+  }
+
+  presentProfileModal(item: Product) {
+    let profileModal = this._modalCtrl.create(ProductDetailPage, item);
+    profileModal.present();
   }
 
   loadProducts() {
@@ -47,8 +49,10 @@ export class ProductPage {
         .subscribe(
         data => {
           data.forEach((item) => {
-          item.found = false;
-            items.push(item);
+            items.push(new Product(
+              item.description, item.barcode, item.ref,
+              item.photo, item.starRating, item.recommendedPrice, item.oldQty
+            ));
           });
         },
         err => this.handleErrors(err),
@@ -66,17 +70,15 @@ export class ProductPage {
             if (item.distributor === this.selectedItem.distributor) {
               for (let product of item.product) {
                 product.found = false;
-                items.push(product);
+                items.push(new Product(
+                  product.description, product.barcode, product.ref,
+                  product.photo, product.starRating, product.recommendedPrice, product.oldQty
+                ));
               }
             }
           });
-          items.sort(function(a, b){
-            if (a.found == b.found)
-              return b.starRating - a.starRating
-            if (a.found){
-              return -1
-            }
-          });
+
+          items.sort(this.sortProducts);
         },
         err => this.handleErrors(err),
         () => console.log('Products load ended.')
@@ -94,7 +96,9 @@ export class ProductPage {
 
     let product = null;
     // Find product in distributor list
-    for (let item of this.items) {
+    for (var _i = 0; _i < this.items.length; _i++) {
+      var item: Product = this.items[_i];
+
       if (item.barcode === barcodeData.text) {
         item.found = true;
         product = item;
@@ -104,21 +108,20 @@ export class ProductPage {
 
     // Product not found ==> new temp product for alert
     if (product == null) {
-      product = {
-        title: barcodeData.text,
-        note: '',
-        found: false,
-        barcode: barcodeData.text
-      };
+      product = new Product(
+        barcodeData.text, barcodeData.text
+      );
     }
-    this.items.sort(function(a, b){
-      if (a.found == b.found)
-        return b.rating - a.rating;
-      if (a.found){
-        return -1;
-      }
-    });
+    this.items.sort(this.sortProducts);
     return product;
+  }
+
+  sortProducts(a: Product, b: Product) {
+    if (a.found == b.found)
+      return b.starRating - a.starRating;
+    if (a.found) {
+      return -1;
+    }
   }
 
   scanProduct(event) {
@@ -131,7 +134,8 @@ export class ProductPage {
           console.log('Product ' + product.title + ' added.');
         } else {
           console.log('Unknown product ' + product.title);
-          alert('Référence produit "' + product.title + '" inconnue!');
+
+          this.showMessage('Référence produit "' + product.title + '" inconnue!');
         }
       } else {
         console.log('No product found.');
@@ -140,8 +144,17 @@ export class ProductPage {
       // An error occurred
       console.log(new Date().toJSON() + ': An error occurred !');
       console.log(err);
-      alert('Une erreur c\'est produite!');
+      this.showMessage('Une erreur c\'est produite!');
     });
+  }
+
+  showMessage(text) {
+    let alert = this._alertCtrl.create({
+      title: 'Echec',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present(prompt);
   }
 
   private handleErrors(error: Response) {

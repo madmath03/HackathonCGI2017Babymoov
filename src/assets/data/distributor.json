@@ -1,12 +1,12 @@
 [
     {
-        "distributor": "Maxi Toys",
+        "distributor": "Aubert",
         "lattitude": "14.1225121",
         "longitude": "54.236522",
-        "address": "116 Boulevard Gustave Flaubert,",
-        "city": "Clermont-Ferrand",
-        "postalCode": "63000",
-        "photo": "http://www.cap-malo.com/sites/cap-malo.com/files/maxitoys.jpg",
+        "address": "Rue pontel,",
+        "city": "Lempdes",
+        "postalCode": "63370",
+        "photo": "http://s3-eu-central-1.amazonaws.com/tout-stmax/aubert-saint-maximin1-300x300.jpg",
         "product": [
             {
                 "ref": "A001117",
@@ -14,6 +14,7 @@
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
                 "recommendedPrice": "92,44",
+                "oldQty": 3,
                 "starRating": 5
             },
             {
@@ -22,6 +23,7 @@
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
                 "recommendedPrice": "92,44",
+                "oldQty": 6,
                 "starRating": 5
             },
             {
@@ -30,6 +32,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
                 "recommendedPrice": "16,89",
+                "oldQty": 0,
                 "starRating": 5
             },
             {
@@ -38,6 +41,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
                 "recommendedPrice": "16,89",
+                "oldQty": 2,
                 "starRating": 5
             },
             {
@@ -46,6 +50,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
                 "recommendedPrice": "16,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -54,6 +59,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
                 "recommendedPrice": "10,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -62,6 +68,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
                 "recommendedPrice": "10,89",
+                "oldQty": 0,
                 "starRating": 5
             },
             {
@@ -86,6 +93,7 @@
                 "photo": "http://www.lecoindespetits.com/10166-827-large/nutribaby-debabymoov.jpg",
                 "barcode": "3661276007048",
                 "recommendedPrice": "83,03",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -94,6 +102,7 @@
                 "photo": "https://www.autourdebebe.com/medias/altpartnerssterilisateurtvcream-3661276143067-1BaseMedia-550Wx550H?context=bWFzdGVyfHJvb3R8MTU5ODV8aW1hZ2UvanBlZ3xoOWMvaDU2Lzg4NDE1MjMxMDE3MjYuanBnfGQxYTFmNGJiNWExZDg2Y2ZjMmQ5Y2EzYmI1YTc4YjZkMGRiNGI2ZDhhYmNhZmZkNzI2YjA5OTU3N2E4ZjMwYWQ",
                 "barcode": "3661276143067",
                 "recommendedPrice": "45,22",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -129,6 +138,7 @@
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
                 "recommendedPrice": "92,44",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -137,6 +147,7 @@
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
                 "recommendedPrice": "92,44",
+                "oldQty": 2,
                 "starRating": 5
             },
             {
@@ -145,6 +156,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
                 "recommendedPrice": "16,89",
+                "oldQty": 5,
                 "starRating": 5
             },
             {
@@ -153,6 +165,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
                 "recommendedPrice": "16,89",
+                "oldQty": 10,
                 "starRating": 5
             },
             {
@@ -161,6 +174,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
                 "recommendedPrice": "16,89",
+                "oldQty": 15,
                 "starRating": 5
             },
             {
@@ -169,6 +183,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
                 "recommendedPrice": "10,89",
+                "oldQty": 7,
                 "starRating": 5
             },
             {
@@ -177,6 +192,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
                 "recommendedPrice": "10,89",
+                "oldQty": 8,
                 "starRating": 5
             },
             {
@@ -204,7 +220,7 @@
         "address": "10 rue chazots",
         "city": "Aubière",
         "postalCode": "63170",
-        "photo": "http://actu.meilleurmobile.com/wp-content/uploads/2015/12/logo-boulanger.png",
+        "photo": "http://www.laptopspirit.fr/wp-content/uploads/new/logo-boulanger1.jpg",
         "product": [
             {
                 "ref": "A001117",
@@ -212,6 +228,7 @@
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
                 "recommendedPrice": "92,44",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -220,6 +237,7 @@
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
                 "recommendedPrice": "92,44",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -228,6 +246,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
                 "recommendedPrice": "16,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -236,6 +255,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
                 "recommendedPrice": "16,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -244,6 +264,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
                 "recommendedPrice": "16,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -252,6 +273,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
                 "recommendedPrice": "10,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -260,6 +282,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
                 "recommendedPrice": "10,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -287,7 +310,7 @@
         "address": "Boulevard Saint-Jean",
         "city": "Clermont-Ferrand",
         "postalCode": "63100",
-        "photo": "http://www.lsa-conso.fr/mediatheque/6/0/0/000009006.jpg",
+        "photo": "https://www.brandsoftheworld.com/sites/default/files/styles/logo-thumbnail/public/0024/9378/brand.gif?itok=Sv5Tu0Vr",
         "product": [
             {
                 "ref": "A001117",
@@ -295,6 +318,7 @@
                 "photo": "http://beboutique.eu/nj/wp-content/uploads/2017/03/A001117-3661276146891-Nutribaby-soft-white.jpg",
                 "barcode": "3661276146891",
                 "recommendedPrice": "92,44",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -303,6 +327,7 @@
                 "photo": "http://media.larmoiredebebe.com/ab/rproducts/60/ab/products/00/04/04/14/AB0004041446_1.jpg",
                 "barcode": "3661276148789",
                 "recommendedPrice": "92,44",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -311,6 +336,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146914.jpg",
                 "barcode": "3661276146914",
                 "recommendedPrice": "16,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -319,6 +345,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
                 "recommendedPrice": "16,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -327,6 +354,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
                 "recommendedPrice": "16,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -335,6 +363,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146945.jpg",
                 "barcode": "3661276146945",
                 "recommendedPrice": "10,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
@@ -343,6 +372,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146952.jpg",
                 "barcode": "3661276146952",
                 "recommendedPrice": "10,89",
+                "oldQty": 1,
                 "starRating": 5
             },
             {
