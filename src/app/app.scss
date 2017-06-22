@@ -37,7 +37,42 @@ rating{
   float : right;
 }
 .fab-md{
-//  background-color :#595C61
 background-color :#F474A2;
 margin-right: 20px;
+}
+.product-done, .product-undone {
+  position: relative;
+  padding: 1em 1.5em;
+  background: #97C02F;
+  overflow: hidden;
+}
+.card{
+  background-color: white;
+}
+.product-done:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 150px 20px 0 0 ;
+  border-style: solid;
+  border-color: #658E15 #fff #fff #658E15 ;
+  background: #658E15;
+  /* Firefox 3.0 damage limitation */
+  display: block; width: 0;
+}
+.product-undone:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 150px 20px 0 0 ;
+  border-style: solid;
+  border-color: #97010A #fff #fff #97010A ;
+  background: #97010A;
+  /* Firefox 3.0 damage limitation */
+  display: block; width: 0;
+}
+.content{
+  background-color :#595C61
 }

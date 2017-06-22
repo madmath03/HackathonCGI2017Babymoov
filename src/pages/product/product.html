@@ -12,7 +12,7 @@
     </button>
   </ion-fab>
 
-    <ion-card *ngFor="let item of items" class=" card product-done">
+    <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }">
       <ion-list>
       <ion-card-content ion-item >
         <div style="float : left"><img src={{item.photo}} style="width : 50px"/></div>
