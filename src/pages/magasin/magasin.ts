@@ -57,11 +57,7 @@ export class MagasinPage {
       .subscribe(
       data => {
         data.forEach((item) => {
-          items.push({
-            title: item.distributor,
-            note: item.address
-          }
-          );
+          items.push(item);
         });
       },
       err => this.handleErrors(err),

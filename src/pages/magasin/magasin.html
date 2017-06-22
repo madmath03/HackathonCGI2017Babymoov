@@ -1,6 +1,6 @@
 <ion-header>
     <img src="assets/images/logo-babymoov.jpg" style="height : 50px" />
-    <ion-title>Magasin</ion-title>
+    <ion-title>Magasins</ion-title>
 </ion-header>
 
 <ion-content>
@@ -8,11 +8,28 @@
   <ion-card *ngFor="let item of items" >
     <ion-list>
       <ion-card-content ion-item  (click)="itemTapped($event, item)">
-        <ion-icon [name]="item.icon" item-left></ion-icon>
-        {{item.title}}
-        <div class="item-note" item-right>
-        {{item.note}}
-        </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="display: flex; align-items: center;">
+           <div style="float : left">
+             <img src={{item.photo}} style="width : 50px"/>
+           </div>
+          </ion-col>
+          <ion-col>
+              <div>
+               <div style="text-align : right">
+                  {{item.distributor}}
+               </div>
+                <div style="text-align : right">
+                  {{item.address}}
+                </div>
+                <div style="text-align : right">
+                  {{item.postalCode + item.city}}
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-card-content>
     </ion-list>
   </ion-card>

@@ -7,6 +7,13 @@ page-login {
       padding-top: 50px;
       padding-bottom: 20px;
     }
+
+    .logo {
+      box-shadow: 0 0 30px white;
+      border-radius: 10px;
+      background: white;
+      padding: 15px;
+    }
  
     .login-box {
       background: #cacaca;
@@ -41,8 +48,12 @@ page-login {
      }
  
      .submit-btn {  
-       background: #4f4f4f;
+       background: #f474a2;
        border: 1px solid #ffffff;
+     }
+ 
+     .submit-btn:hover {  
+       background: #4f4f4f;
      }
  
      .register-btn {
