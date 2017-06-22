@@ -9,6 +9,7 @@ export class Product {
     public photo: string = null,
     public starRating: number = 0,
     public recommendedPrice: number = 0,
+    public oldQty: number = null,
     public actualPrice: number = null,
     public quantity: number = 1,
     public found: boolean = false) {

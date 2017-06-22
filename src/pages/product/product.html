@@ -15,8 +15,7 @@
 
   <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }">
     <ion-list>
-      <ion-card-header>
-        <div style="float : left"><img src={{item.photo}} style="width : 50px" /></div>
+        <div style="float : left; margin-top : 10px;margin-right : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
         {{item.description}}
 
         <ion-fab top right>
@@ -24,17 +23,27 @@
               <ion-icon name="create"></ion-icon>
             </button>
         </ion-fab>
-      </ion-card-header>
-      <ion-card-content ion-item>
-        <div>
+        <div style="padding-left:5px">
           <div class="item-note">
-            {{item.recommendedPrice}} €
+            <span class="little" *ngIf="item.oldQty !=''">
+              Prix recommandé: {{item.recommendedPrice}} €
+            </span>
+            <span class="little" *ngIf="item.oldQty ==''">
+              &nbsp;
+            </span>
+          </div>
+          <div class="item-note">
+              <span class="little" *ngIf="item.oldQty !=''">
+                Dernière quantité: {{item.oldQty}}
+              </span>
+              <span class="little" *ngIf="item.oldQty ==''">
+                &nbsp;
+              </span>
           </div>
 
           <rating [(ngModel)]="item.starRating" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
             starIconName="star" nullable="false"> </rating>
         </div>
-      </ion-card-content>
     </ion-list>
   </ion-card>
 </ion-content>

@@ -58,7 +58,7 @@ export class ProductPage {
           data.forEach((item) => {
             items.push(new Product(
               item.description, item.barcode, item.ref,
-              item.photo, item.starRating, item.recommendedPrice
+              item.photo, item.starRating, item.recommendedPrice, item.oldQty
             ));
           });
         },
@@ -79,7 +79,7 @@ export class ProductPage {
                 product.found = false;
                 items.push(new Product(
                   product.description, product.barcode, product.ref,
-                  product.photo, product.starRating, product.recommendedPrice
+                  product.photo, product.starRating, product.recommendedPrice, product.oldQty
                 ));
               }
             }
