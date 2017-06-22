@@ -19,12 +19,12 @@ export class AuthService {
 
     public login(credentials) {
         if (credentials.email === null || credentials.password === null) {
-            return Observable.throw("Please insert credentials");
+            return Observable.throw('Renseignez les informations');
         } else {
             return Observable.create(observer => {
                 // At this point make a request to your backend to make a real check!
-                let access = (credentials.password === "pass" && credentials.email === "email");
-                this.currentUser = new User('Simon', 'saimon@devdactic.com');
+                let access = (credentials.password === 'password' && credentials.email === 'email');
+                this.currentUser = new User('Winner', 'winner@babymoov.fr');
                 observer.next(access);
                 observer.complete();
             });
@@ -33,7 +33,7 @@ export class AuthService {
 
     public register(credentials) {
         if (credentials.email === null || credentials.password === null) {
-            return Observable.throw("Please insert credentials");
+            return Observable.throw('Renseignez les informations');
         } else {
             // At this point store the credentials to your backend!
             return Observable.create(observer => {
