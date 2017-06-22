@@ -1,8 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+  <ion-navbar >
+    <img src="assets/images/logo-babymoov.jpg" style="height : 50px"/>
     <ion-title>{{ 'Produits ' + currentDistributor }}</ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,12 +13,13 @@
   </ion-fab>
 
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)" class="">
       <ion-icon [name]="item.found ? 'checkmark-circle' : ''" item-left></ion-icon>
-      <ion-img [width]="80" [height]="80" [src]="item.photo"></ion-img>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}} €
+      <div style="float : left"><img src={{item.photo}} style="width : 50px"/></div>
+      <div>{{item.title}}
+        <div class="item-note">
+          {{item.note}} €
+        </div>
       </div>
     </button>
   </ion-list>

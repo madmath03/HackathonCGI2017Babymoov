@@ -54,9 +54,12 @@ export class ProductPage {
             for (let product of item.product) {
               items.push({
                 title: product.description,
+                ref : product.ref,
+                rating : product.starRating,
                 note: product.recommendedPrice,
                 found: false,
-                barcode: product.barcode
+                barcode: product.barcode,
+                photo : product.photo
               }
               );
             }
