@@ -16,7 +16,7 @@ import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner
 export class ProductPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{ title: string, note: string, icon: string }>;
+  items: Array<{ title: string, note: string, found: boolean, barcode: string }>;
   currentDistributor: string = 'Maxi Toys';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -33,9 +33,12 @@ export class ProductPage {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
+    /*
     this.navCtrl.push(ProductPage, {
       item: item
     });
+    */
+    //item.found = !item.found;
   }
 
   loadProducts() {
@@ -52,7 +55,8 @@ export class ProductPage {
               items.push({
                 title: product.description,
                 note: product.recommendedPrice,
-                icon: ''
+                found: false,
+                barcode: product.barcode
               }
               );
             }
@@ -67,22 +71,47 @@ export class ProductPage {
   }
 
   findProduct(barcodeData: BarcodeScanResult) {
-    return {
-      title: barcodeData.text,
-      note: '',
-      icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-    };
+    if (barcodeData.cancelled) {
+      return null;
+    }
+
+    let product = null;
+    // Find product in distributor list
+    for (let item of this.items) {
+      if (item.barcode === barcodeData.text) {
+        item.found = true;
+        product = item;
+        break;
+      }
+    }
+
+    // Product not found ==> new temp product for alert
+    if (product == null) {
+      product = {
+        title: barcodeData.text,
+        note: '',
+        found: false,
+        barcode: barcodeData.text
+      };
+    }
+
+    return product;
   }
 
   scanProduct(event) {
     this._barcodeScanner.scan().then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
-      if (!barcodeData.cancelled) {
-        console.log(barcodeData);
-        alert('Produit : ' + barcodeData.text);
-        var product = this.findProduct(barcodeData);
-        this.items.push(product);
+      let product = this.findProduct(barcodeData);
+      if (product) {
+        if (product.found) {
+          console.log('Product ' + product.title + ' added.');
+        } else {
+          console.log('Unknown product ' + product.title);
+          alert('Référence produit "' + product.title + '" inconnue!');
+        }
+      } else {
+          console.log('No product found.');
       }
     }, (err) => {
       // An error occurred
