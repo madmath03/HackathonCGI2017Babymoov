@@ -6,7 +6,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { ProductPage } from '../pages/produit/produit';
 import { MagasinPage } from '../pages/magasin/magasin';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -16,7 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
+    ProductPage,
     MagasinPage
   ],
   imports: [
@@ -27,7 +27,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    ProductPage,
     MagasinPage
   ],
   providers: [
