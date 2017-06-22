@@ -1,10 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    <img src="assets/images/logo-babymoov.jpg" style="height : 50px" />
     <ion-title>Magasin</ion-title>
-  </ion-navbar>
 </ion-header>
 
 <ion-content>
@@ -17,13 +13,15 @@
 
 
 
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
+  <ion-card *ngFor="let item of items" >
+    <ion-list>
+      <ion-card-content ion-item  (click)="itemTapped($event, item)">
+        <ion-icon [name]="item.icon" item-left></ion-icon>
+        {{item.title}}
+        <div class="item-note" item-right>
         {{item.note}}
-      </div>
-    </button>
-  </ion-list>
+        </div>
+      </ion-card-content>
+    </ion-list>
+  </ion-card>
 </ion-content>
