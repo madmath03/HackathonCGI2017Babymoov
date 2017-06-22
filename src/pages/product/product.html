@@ -1,11 +1,9 @@
 <ion-header>
-  <ion-navbar>
     <button *ngIf="!!!selectedItem" ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <img src="assets/images/logo-babymoov.jpg" style="height : 50px" />
     <ion-title>{{ selectedItem == null ? 'Produits' : selectedItem.title }}</ion-title>
-  </ion-navbar>
 </ion-header>
 
 <ion-content>
