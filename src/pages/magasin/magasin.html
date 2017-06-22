@@ -1,25 +1,28 @@
 <ion-header>
     <img src="assets/images/logo-babymoov.jpg" style="height : 50px" />
-    <ion-title>Magasin</ion-title>
+    <ion-title>Magasins</ion-title>
 </ion-header>
 
 <ion-content>
-<div padding>
-    You are here<br>
-    Longitude <b>{{posOptionsLong}}</b> <br>
-    Lattitude <b>{{posOptionsLat}}</b>
-  </div>
         <div id="map" data-tap-disabled="true"></div>
 
 
 
   <ion-card *ngFor="let item of items" >
     <ion-list>
+      <ion-card-header style=" display: flex; align-items: center;" (click)="itemTapped($event, item)">
+        <div style="float : left"><img src={{item.photo}} style="width : 50px; margin : 10px"/></div>
+        <span>  {{item.distributor}}</span>
+
+      </ion-card-header>
       <ion-card-content ion-item  (click)="itemTapped($event, item)">
-        <ion-icon [name]="item.icon" item-left></ion-icon>
-        {{item.title}}
-        <div class="item-note" item-right>
-        {{item.note}}
+        <div style="float : right">
+          <div style="float : right">
+            {{item.address}}
+          </div>
+          <div style="float : right">
+            {{item.postalCode + item.city}}
+          </div>
         </div>
       </ion-card-content>
     </ion-list>

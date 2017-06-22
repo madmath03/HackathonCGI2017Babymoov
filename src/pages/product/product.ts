@@ -16,7 +16,7 @@ import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner
 export class ProductPage {
   selectedItem: any = null;
   icons: string[];
-  items: Array<{ title: string, note: string, found: boolean, barcode: string }>;
+  items: Array<{ title: string, note: string, found: boolean, barcode: string, rating: number }>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _barcodeScanner: BarcodeScanner, private _http: Http) {
@@ -63,26 +63,25 @@ export class ProductPage {
         );
 
     } else {
-      console.log('Loading products for ' + this.selectedItem.title + '...');
+      console.log('Loading products for ' + this.selectedItem.distributor + '...');
 
       this._http.get('assets/data/distributor.json')
         .map(res => res.json())
         .subscribe(
         data => {
           data.forEach((item) => {
-            if (item.distributor === this.selectedItem.title) {
+            if (item.distributor === this.selectedItem.distributor) {
               for (let product of item.product) {
-                items.push({
-                  title: product.description,
-                  ref: product.ref,
-                  rating: product.starRating,
-                  note: product.recommendedPrice,
-                  found: false,
-                  barcode: product.barcode,
-                  photo: product.photo
-                }
-                );
+                product.found = false;
+                items.push(product);
               }
+            }
+          });
+          items.sort(function(a, b){
+            if (a.found == b.found)
+              return b.rating - a.rating
+            if (a.found){
+              return -1
             }
           });
         },
@@ -119,7 +118,13 @@ export class ProductPage {
         barcode: barcodeData.text
       };
     }
-
+    this.items.sort(function(a, b){
+      if (a.found == b.found)
+        return b.rating - a.rating;
+      if (a.found){
+        return -1;
+      }
+    });
     return product;
   }
 
