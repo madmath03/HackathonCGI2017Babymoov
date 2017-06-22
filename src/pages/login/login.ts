@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage/*, NavController, NavParams*/ } from 'ionic-angular';
-//import { AuthService } from '../../providers/auth-service';
+import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
+
+import { MagasinPage } from '../magasin/magasin';
+
+import { AuthService } from '../../providers/auth-service';
 
 /**
  * Generated class for the LoginPage page.
@@ -14,25 +17,23 @@ import { IonicPage/*, NavController, NavParams*/ } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  /*
   private loading: Loading;
   private registerCredentials = { email: '', password: '' };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-
   public login() {
-    this.showLoading()
+    this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
-        this.nav.setRoot('HomePage');
+        this.nav.setRoot(MagasinPage);
       } else {
-        this.showError("Access Denied");
+        this.showError("Accès refusé");
       }
     },
       error => {
@@ -42,7 +43,7 @@ export class LoginPage {
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: 'Patientez...',
       dismissOnPageChange: true
     });
     this.loading.present();
@@ -52,11 +53,10 @@ export class LoginPage {
     this.loading.dismiss();
 
     let alert = this.alertCtrl.create({
-      title: 'Fail',
+      title: 'Echec',
       subTitle: text,
       buttons: ['OK']
     });
     alert.present(prompt);
   }
-  */
 }

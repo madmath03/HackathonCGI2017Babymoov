@@ -10,9 +10,12 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { MyApp } from './app.component';
+import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { ProductPage } from '../pages/product/product';
 import { MagasinPage } from '../pages/magasin/magasin';
+
+import { AuthService } from '../providers/auth-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,6 +23,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
+    LoginPage,
     HomePage,
     ProductPage,
     MagasinPage
@@ -33,6 +37,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    LoginPage,
     HomePage,
     ProductPage,
     MagasinPage
@@ -40,6 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
     BarcodeScanner,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
