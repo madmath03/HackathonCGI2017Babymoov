@@ -3,14 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
-    <button ion-button (click)="scanProduct($event)">
-      <ion-icon name="camera"></ion-icon>
-    </button>
+    <ion-title>Produits</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-fab top right edge>
+    <button ion-fab (click)="scanProduct($event)">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-fab>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-left></ion-icon>

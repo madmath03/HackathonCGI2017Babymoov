@@ -4,10 +4,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-product',
+  templateUrl: 'product.html'
 })
-export class ListPage {
+export class ProductPage {
   selectedItem: any;
   icons: string[];
   items: Array<{ title: string, note: string, icon: string }>;
@@ -22,35 +22,47 @@ export class ListPage {
       'american-football', 'boat', 'bluetooth', 'build'];
 
     // TODO Get items for client from API
-    this.items = [];
+    this.items = this.loadProducts();
+  }
+
+  itemTapped(event, item) {
+    // That's right, we're pushing to ourselves!
+    this.navCtrl.push(ProductPage, {
+      item: item
+    });
+  }
+
+  loadProducts() {
+    var items = [];
+/*
     for (let i = 1; i < 11; i++) {
-      this.items.push({
+      items.push({
         title: 'Item ' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+*/
+    return items;
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
-    });
+  findProduct(barcodeData: BarcodeScanResult) {
+    return {
+      title: barcodeData.text,
+      note: '',
+      icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    };
   }
 
   scanProduct(event) {
-    this._barcodeScanner.scan().then((barcodeData : BarcodeScanResult) => {
+    this._barcodeScanner.scan().then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
       if (!barcodeData.cancelled) {
         console.log(barcodeData);
-        alert('Produit : '+barcodeData.text);
-        this.items.push({
-          title: barcodeData.text,
-          note: '',
-          icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-        });
+        alert('Produit : ' + barcodeData.text);
+        var product = this.findProduct(barcodeData);
+        this.items.push(product);
       }
     }, (err) => {
       // An error occurred
