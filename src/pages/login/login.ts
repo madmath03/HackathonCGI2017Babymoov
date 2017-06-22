@@ -20,7 +20,10 @@ export class LoginPage {
   private loading: Loading;
   private registerCredentials = { email: '', password: '' };
 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(private nav: NavController, 
+    private auth: AuthService, 
+    private alertCtrl: AlertController, 
+    private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
