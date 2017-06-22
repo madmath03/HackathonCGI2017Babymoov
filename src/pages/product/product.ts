@@ -40,8 +40,6 @@ export class ProductPage {
     var items = [];
 
     if (this.selectedItem == null) {
-
-      /*
       console.log('Loading all products...');
 
       this._http.get('assets/data/product.json')
@@ -49,27 +47,21 @@ export class ProductPage {
         .subscribe(
         data => {
           data.forEach((item) => {
-            if (item.distributor === this.selectedItem.title) {
-              for (let product of item.product) {
-                items.push({
-                  title: product.description,
-                  ref: product.ref,
-                  rating: product.starRating,
-                  note: product.recommendedPrice,
-                  found: false,
-                  barcode: product.barcode,
-                  photo: product.photo
-                }
-                );
-              }
-            }
+            items.push({
+              title: item.description,
+              ref: item.ref,
+              rating: item.starRating,
+              note: item.recommendedPrice,
+              found: false,
+              barcode: item.barcode,
+              photo: item.photo
+            });
           });
         },
         err => this.handleErrors(err),
         () => console.log('Products load ended.')
         );
 
-*/
     } else {
       console.log('Loading products for ' + this.selectedItem.title + '...');
 
