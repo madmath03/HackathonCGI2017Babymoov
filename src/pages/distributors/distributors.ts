@@ -64,6 +64,8 @@ export class DistributorsPage {
   }
 
   itemTapped(event, item: Distributor) {
+    this.showLoading();
+
     // We're pushing to the products
     this.navCtrl.push(ProductsPage, {
       item: item
