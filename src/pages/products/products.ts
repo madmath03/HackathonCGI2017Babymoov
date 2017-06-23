@@ -87,6 +87,7 @@ export class ProductsPage {
     });
 
     productModal.onDidDismiss(data => {
+      this.items.sort(this.sortProducts);
       console.log(productModal);
     });
 
@@ -189,7 +190,9 @@ export class ProductsPage {
   sortProducts(a: Product, b: Product) {
     if (a.found == b.found)
       return b.starRating - a.starRating;
-    if (a.found) {
+    if (a.found == true) {
+      return 1;
+    }else{
       return -1;
     }
   }
@@ -247,6 +250,7 @@ export class ProductsPage {
     this._barcodeScanner.scan(this.options).then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
+      this.items.sort(this.sortProducts);
       let product: Product = this.findProduct(barcodeData);
       this.checkProduct(product);
     }, (err) => {

@@ -3,4 +3,14 @@ page-synthesis {
     .synthesis-content{
         background-image : url("../assets/images/loginPage.jpg");
     }
+
+    .validate-btn {
+        background: #f474a2;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+    }
+
+    .validate-btn:hover {
+        background: #80b819;
+    }
 }
