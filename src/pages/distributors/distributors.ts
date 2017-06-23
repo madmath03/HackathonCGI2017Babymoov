@@ -33,12 +33,12 @@ export class DistributorsPage {
 
   map: any;
   latitude: any;
-  longitude:any;
+  longitude: any;
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
   markers: any = [];
   //items: Array<Distributor>;
-  locations:any =[];
+  locations: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _loadingCtrl: LoadingController,
@@ -74,15 +74,30 @@ export class DistributorsPage {
   }
 
   showLoading() {
+    // FIXME Uncaught (in promise): removeView was not found
+    /*
+    Error: Uncaught (in promise): removeView was not found
+    at c (http://localhost:8100/build/polyfills.js:3:13535)
+    at c (http://localhost:8100/build/polyfills.js:3:13221)
+    at http://localhost:8100/build/polyfills.js:3:14067
+    at t.invokeTask (http://localhost:8100/build/polyfills.js:3:9967)
+    at Object.onInvokeTask (http://localhost:8100/build/main.js:4640:37)
+    at t.invokeTask (http://localhost:8100/build/polyfills.js:3:9888)
+    at r.runTask (http://localhost:8100/build/polyfills.js:3:5143)
+    at o (http://localhost:8100/build/polyfills.js:3:2203)
+    at <anonymous>
+    */
+    /*
     this.loading = this._loadingCtrl.create({
       content: 'Patientez...',
       dismissOnPageChange: true
     });
     this.loading.present();
+    */
   }
 
   itemTapped(event, item: Distributor) {
-    //this.showLoading();
+    this.showLoading();
 
     // We're pushing to the products
     this.navCtrl.push(ProductsPage, {
@@ -91,7 +106,7 @@ export class DistributorsPage {
   }
 
   loadAllDistributors() {
-   // this.showLoading();
+    this.showLoading();
     console.log('Loading distributors...');
     var items = [];
 
@@ -101,7 +116,7 @@ export class DistributorsPage {
       data => {
         data.forEach((item) => {
           items.push(item);
-          this.addMarker(item.lattitude, item.longitude,false,item.photo);
+          this.addMarker(item.lattitude, item.longitude, false, item.photo);
         });
         this.applyHaversine(items);
       },
@@ -149,44 +164,44 @@ export class DistributorsPage {
     this.directionsDisplay.setMap(this.map);
     this.items = this.loadAllDistributors();
 
-    this.addMarker(this.latitude, this.longitude,true,null);
+    this.addMarker(this.latitude, this.longitude, true, null);
   }
 
-  addMarker(lat: number, lng: number, user:boolean, photo:any): void {
+  addMarker(lat: number, lng: number, user: boolean, photo: any): void {
 
     let latLng = new google.maps.LatLng(lat, lng);
     var marker;
-    if(user){
+    if (user) {
       let marker = new google.maps.Marker({
-      icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: latLng
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
       });
-    }else{
+    } else {
       var icon = {
-    url: photo, // url
-    scaledSize: new google.maps.Size(50, 50), // scaled size
-    origin: new google.maps.Point(0,0), // origin
-    anchor: new google.maps.Point(0, 0) // anchor
-};
+        url: photo, // url
+        scaledSize: new google.maps.Size(50, 50), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+      };
 
       let marker = new google.maps.Marker({
-        icon:icon,
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: latLng
+        icon: icon,
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
       });
     }
 
-    this.markers.push(marker);  
-      
+    this.markers.push(marker);
+
   }
 
-  applyHaversine(locations){
+  applyHaversine(locations) {
 
     let usersLocation = {
-      lat: 45.7892526, 
+      lat: 45.7892526,
       lng: 3.1060942999999996
     };
 
@@ -205,39 +220,39 @@ export class DistributorsPage {
     });
 
     locations.sort((locationA, locationB) => {
-          return locationA.distance - locationB.distance;
-        });
+      return locationA.distance - locationB.distance;
+    });
 
     return locations;
   }
 
-  getDistanceBetweenPoints(start, end, units){
+  getDistanceBetweenPoints(start, end, units) {
 
-      let earthRadius = {
-          miles: 3958.8,
-          km: 6371
-      };
-   
-      let R = earthRadius[units || 'km'];
-      let lat1 = start.lat;
-      let lon1 = start.lng;
-      let lat2 = end.lat;
-      let lon2 = end.lng;
-   
-      let dLat = this.toRad((lat2 - lat1));
-      let dLon = this.toRad((lon2 - lon1));
-      let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    let earthRadius = {
+      miles: 3958.8,
+      km: 6371
+    };
+
+    let R = earthRadius[units || 'km'];
+    let lat1 = start.lat;
+    let lon1 = start.lng;
+    let lat2 = end.lat;
+    let lon2 = end.lng;
+
+    let dLat = this.toRad((lat2 - lat1));
+    let dLon = this.toRad((lon2 - lon1));
+    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(this.toRad(lat1)) * Math.cos(this.toRad(lat2)) *
       Math.sin(dLon / 2) *
       Math.sin(dLon / 2);
-      let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      let d = R * c;
-   
-      return d;
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    let d = R * c;
+
+    return d;
 
   }
 
-  toRad(x){
+  toRad(x) {
     return x * Math.PI / 180;
   }
 
