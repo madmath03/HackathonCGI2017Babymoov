@@ -22,6 +22,7 @@ export class ProductsPage {
   //private loading: Loading;
   selectedItem: Distributor = null;
   items: Array<Product>;
+  lookupItem: string = null;
 
   options: BarcodeScannerOptions = {
     preferFrontCamera: false,
@@ -193,16 +194,36 @@ export class ProductsPage {
   }
 
   searchProduct(event) {
+    /*
     let productModal = this._modalCtrl.create(ProductLookupPage);
 
     productModal.onDidDismiss(data => {
       if (data) {
-        let product: Product = this.findProduct(data);
+        let product: Product = this.findProduct(
+          {
+            format: 'EAN_13',
+            cancelled: false,
+            text: data
+          }
+        );
         this.checkProduct(product);
       }
     });
 
     productModal.present();
+    */
+
+    if (this.lookupItem) {
+      let product: Product = this.findProduct(
+        {
+          format: 'EAN_13',
+          cancelled: false,
+          text: this.lookupItem
+        }
+      );
+      this.checkProduct(product);
+    }
+
   }
 
   checkProduct(product: Product) {

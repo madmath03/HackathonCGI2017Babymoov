@@ -4,63 +4,68 @@
 </ion-header>
 
 <ion-content class="products-content">
-  <ion-fab *ngIf="selectedItem" top right edge>
+
+  <ion-input class="border-bottom" type="number" placeholder="Code barre" name="lookupItem" [(ngModel)]="lookupItem" required></ion-input>
+
+  <ion-fab top right edge>
 
     <button ion-fab mini>
-      <ion-icon name="add"></ion-icon></button>
-  <ion-fab-list side="left">
-    <button ion-fab (click)="scanProduct($event)">
-      <ion-icon name="camera"></ion-icon>
-    </button>
+        <ion-icon name="add"></ion-icon>
+      </button>
+    <ion-fab-list side="left">
+      <button ion-fab (click)="scanProduct($event)">
+          <ion-icon name="camera"></ion-icon>
+        </button>
 
       <button ion-fab (click)="searchProduct($event)">
-        <ion-icon name="create"></ion-icon>
-      </button>
-  </ion-fab-list>
+          <ion-icon name="create"></ion-icon>
+        </button>
+    </ion-fab-list>
 
   </ion-fab>
 
-  <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }" (click)="itemTapped($event, item)">
+  <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }"
+    (click)="itemTapped($event, item)">
     <ion-list>
-        <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;">
-          <img src={{item.photo}} style="width : 60px" />
-        </div>
-        {{item.description}}
-        <div style="padding-left:5px">
-          <ion-grid style="display : block">
-            <ion-row>
-              <ion-col>
-          <div class="item-note">
-            <span class="little" *ngIf="item.oldQty !=null">
+      <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;">
+        <img src={{item.photo}} style="width : 60px" />
+      </div>
+      {{item.description}}
+      <div style="padding-left:5px">
+        <ion-grid style="display : block">
+          <ion-row>
+            <ion-col>
+              <div class="item-note">
+                <span class="little" *ngIf="item.oldQty !=null">
               {{item.recommendedPrice}} €
             </span>
-          <span class="little" *ngIf="item.oldQty ==null">
+                <span class="little" *ngIf="item.oldQty ==null">
               &nbsp;
             </span>
-        </div>
-        <div class="item-note">
-          <span class="little" *ngIf="item.oldQty !=null">
+              </div>
+              <div class="item-note">
+                <span class="little" *ngIf="item.oldQty !=null">
                  {{'Dernière quantité: ' +item.oldQty}}
           </span>
 
-          <span class="little" *ngIf="item.oldQty ==null">
+                <span class="little" *ngIf="item.oldQty ==null">
                 &nbsp;
               </span>
-        </div>
+              </div>
 
-        </ion-col>
-        <ion-col style="text-align : right">
-          <div class="item-note">
-            <span  *ngIf="item.actualPrice !=null">
+            </ion-col>
+            <ion-col style="text-align : right">
+              <div class="item-note">
+                <span *ngIf="item.actualPrice !=null">
               <span [ngClass]="{'red' : (item.recommendedPriceP < item.actualPrice || item.recommendedPriceM > item.actualPrice) }"> {{item.actualPrice}} €</span>
-            </span>
-          </div>
-          <div class="item-note">
-            <span  *ngIf="item.quantity !=null">
+                </span>
+              </div>
+              <div class="item-note">
+                <span *ngIf="item.quantity !=null">
               <span [ngClass]="{'red' : item.oldQty == item.quantity && item.quantity == 0 }">{{item.quantity}}</span>
-            </span>
-          </div>
-          </ion-col>
+                </span>
+              </div>
+            </ion-col>
 
           </ion-row>
         </ion-grid>
