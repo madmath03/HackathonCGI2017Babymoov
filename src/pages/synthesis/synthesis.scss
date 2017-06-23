@@ -13,4 +13,15 @@ page-synthesis {
     .validate-btn:hover {
         background: #80b819;
     }
+
+    .warnings{
+      .card-header{
+        background-color: orange;
+    opacity: 0.8;
+
+      }
+      span{
+        padding: 10px;
+      }
+    }
 }
