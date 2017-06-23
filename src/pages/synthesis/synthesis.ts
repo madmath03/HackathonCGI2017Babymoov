@@ -141,17 +141,18 @@ export class SynthesisPage {
     //this.synthesis.advices.push('Test Advice');
   }
 
-  checkPriceDiff() {
+  checkPriceDiff(){
 
-    var warningMsg = "Les produits suivants sont vendus en dessus du prix de référence : ";
-    for (var _i = 0; _i < this.synthesis.items.length; _i++) {
-      var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
-      var actualPrice = this.synthesis.items[_i].actualPrice;
-
-      if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice) {
-        if (recommendedPrice > actualPrice) {
-          warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
-          this.warningFound = true;
+      var warningMsg = "Les produits suivants sont vendus au dessus du prix de référence : ";
+      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+        var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
+        var actualPrice = this.synthesis.items[_i].actualPrice;
+        
+        if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice){
+          if(recommendedPrice > actualPrice){
+           warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+           this.warningFound = true;
+          }
         }
       }
 
