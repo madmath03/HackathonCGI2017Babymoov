@@ -82,7 +82,7 @@ export class SynthesisPage {
     */
   }
 
-  showMessage(text, title='Echec') {
+  showMessage(text, title = 'Echec') {
     //this.loading.dismiss();
 
     let alert = this._alertCtrl.create({
@@ -94,7 +94,7 @@ export class SynthesisPage {
   }
 
   shareSynthesis() {
-    var message: string = '';
+    var message: string = 'Bonjour,';
 
     for (var alert of this.synthesis.alerts) {
       message = message + '\n' + alert;
@@ -118,15 +118,30 @@ export class SynthesisPage {
       message = message + '\n' + advice;
     }
 
+    message = message + '\n'
+      + 'Pour plus d\'informations consultez le site de l\'application: '
+      + 'https://github.com/madmath03/HackathonCGI2017Babymoov';
+
     console.log(message);
 
-    this._socialSharing.share(message, this.synthesis.title).then(() => {
-      // Success!
+    // this is the complete list of currently supported params you can pass to the plugin (all optional)
+    var options = {
+      message: message,
+      subject: '[BABYMOOV] ' + this.synthesis.title,
+      files: ['', ''],
+      url: '',
+      chooserTitle: 'Choissisez une application'
+
+    this._socialSharing.shareWithOptions(options).then((result) => {
       console.log('Share successful!');
-    }).catch((reason) => {
-      // Error!
+
+      // On Android apps mostly return false even while it's true
+      console.log("Share completed? " + result.completed);
+      // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+      console.log("Shared to app: " + result.app);
+    }).catch((err) => {
       console.log('Something went wrong!');
-      console.log(reason);
+      console.log(err);
       this.showMessage('Une erreur c\'est produite durant le partage!');
     });
   }
@@ -141,29 +156,27 @@ export class SynthesisPage {
     //this.synthesis.advices.push('Test Advice');
   }
 
-  checkPriceDiff(){
+  checkPriceDiff() {
 
-      var warningMsg = "Les produits suivants sont vendus au dessus du prix de référence : ";
-      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
-        var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
-        var actualPrice = this.synthesis.items[_i].actualPrice;
-        
-        if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice){
-          if(recommendedPrice > actualPrice){
-           warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
-           this.warningFound = true;
-          }
+    var warningMsg = "Les produits suivants sont vendus au dessus du prix de référence : ";
+    for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+      var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
+      var actualPrice = this.synthesis.items[_i].actualPrice;
+
+      if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice) {
+        if (recommendedPrice > actualPrice) {
+          warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+          this.warningFound = true;
         }
       }
+    }
 
-      if(this.warningFound){
-          warningMsg = warningMsg.substring(0, warningMsg.length - 2);
-          this.synthesis.warnings.push(warningMsg);
-      }
+    if (this.warningFound) {
+      warningMsg = warningMsg.substring(0, warningMsg.length - 2);
+      this.synthesis.warnings.push(warningMsg);
+    }
 
   }
-
-
 
   checkStock() {
 
@@ -172,7 +185,7 @@ export class SynthesisPage {
     for (var _i = 0; _i < this.synthesis.items.length; _i++) {
       var quantity = this.synthesis.items[_i].quantity;
 
-      if(this.alertFound == true){
+      if (this.alertFound == true) {
         alertMsg = alertMsg.substring(0, alertMsg.length - 2);
         this.synthesis.alerts.push(alertMsg);
       }
