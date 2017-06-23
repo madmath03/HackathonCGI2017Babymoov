@@ -155,11 +155,10 @@ export class SynthesisPage {
         }
       }
 
-    }
-
-    if (this.warningFound) {
-      this.synthesis.warnings.push(warningMsg);
-    }
+      if(this.warningFound){
+          warningMsg = warningMsg.substring(0, warningMsg.length - 2);
+          this.synthesis.warnings.push(warningMsg);
+      }
 
   }
 
@@ -172,9 +171,9 @@ export class SynthesisPage {
     for (var _i = 0; _i < this.synthesis.items.length; _i++) {
       var quantity = this.synthesis.items[_i].quantity;
 
-      if (quantity == 0) {
-        alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
-        this.alertFound = true;
+      if(this.alertFound == true){
+        alertMsg = alertMsg.substring(0, alertMsg.length - 2);
+        this.synthesis.alerts.push(alertMsg);
       }
 
     }
