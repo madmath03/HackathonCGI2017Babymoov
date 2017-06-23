@@ -131,6 +131,7 @@ export class SynthesisPage {
       files: ['', ''],
       url: '',
       chooserTitle: 'Choissisez une application'
+    };
 
     this._socialSharing.shareWithOptions(options).then((result) => {
       console.log('Share successful!');
