@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, IonicPage } from 'ionic-angular';
 
 import { DistributorsPage } from '../distributors/distributors';
 
@@ -17,7 +17,7 @@ import { AuthService } from '../../providers/auth-service';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  private loading: Loading;
+  //private loading: Loading;
   private registerCredentials = { email: '', password: '' };
 
   constructor(private nav: NavController, 

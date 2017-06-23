@@ -1,8 +1,7 @@
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
-import { IonicPage } from 'ionic-angular';
 
 import { ProductsPage } from '../products/products';
 
@@ -25,7 +24,7 @@ declare var google;
 export class DistributorsPage {
 
   @ViewChild('map') mapElement: ElementRef;
-  private loading: Loading;
+  //private loading: Loading;
   selectedItem: any;
   posOptionsLat: number;
   posOptionsLong: number;
