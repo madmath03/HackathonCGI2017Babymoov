@@ -1,8 +1,8 @@
 [
     {
         "distributor": "Aubert",
-        "lattitude": "14.1225121",
-        "longitude": "54.236522",
+        "lattitude": "45.778199",
+        "longitude": "3.195894",
         "address": "Rue pontel,",
         "city": "Lempdes",
         "postalCode": "63370",
@@ -125,8 +125,8 @@
     },
     {
         "distributor": "Darty",
-        "lattitude": "14.1225121",
-        "longitude": "54.236522",
+        "lattitude": "45.765736",
+        "longitude": "3.128816",
         "address": "Zone La Pardieu, Rue de l'Hermitage",
         "city": "Clermont-Ferrand",
         "postalCode": "63000",
@@ -215,8 +215,8 @@
     },
     {
         "distributor": "Boulanger",
-        "lattitude": "14.1225121",
-        "longitude": "54.236522",
+        "lattitude": "45.751329",
+        "longitude": "3.134625",
         "address": "10 rue chazots",
         "city": "Aubière",
         "postalCode": "63170",
@@ -305,8 +305,8 @@
     },
     {
         "distributor": "Géant",
-        "lattitude": "14.1225121",
-        "longitude": "54.236522",
+        "lattitude": "45.783817",
+        "longitude": "3.118779",
         "address": "Boulevard Saint-Jean",
         "city": "Clermont-Ferrand",
         "postalCode": "63100",
