@@ -13,13 +13,13 @@ export class Synthesis {
     public date: Date = new Date(),
     public title: string = null,
     public alerts: Array<string> = [],
-    public warnings: Array<string> = [],
+    public warnings: Array<{title : string, message :Array<String>}> = [],
     public notes: Array<string> = [],
     public advices: Array<string> = []
   ) {
-    this.title = 'Synthèse' 
-      + (this.distributor == null ? '' : ' ' + this.distributor.distributor) 
-      + ' ' 
+    this.title = 'Synthèse'
+      + (this.distributor == null ? '' : ' ' + this.distributor.distributor)
+      + ' '
       + this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
   }
 
@@ -101,13 +101,13 @@ export class SynthesisPage {
     for (var advice of this.synthesis.advices) {
       message = message + '\n' + advice;
     }
-    
+
     this._socialSharing.share(message, this.synthesis.title);
   }
 
   initSynthesis() {
     // TODO Real analysis
-    
+
     this.checkPriceDiff();
     this.checkStock();
 
@@ -117,29 +117,30 @@ export class SynthesisPage {
 
   checkPriceDiff(){
 
-      var warningMsg = "Les produits suivants sont vendus en dessus du prix de référence : ";
+      var warningMsg = "";
+      var warn ={title : "Les produits suivants sont vendus en dessus du prix de référence : ",message :[]};
       for (var _i = 0; _i < this.synthesis.items.length; _i++) {
         var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
         var actualPrice = this.synthesis.items[_i].actualPrice;
-        
+        if (actualPrice != null)
         if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice){
           if(recommendedPrice > actualPrice){
-           warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+           warn.message.push(this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ");
            this.warningFound = true;
           }
         }
-        
+
       }
 
       if(this.warningFound){
           warningMsg = warningMsg.substring(0, warningMsg.length - 2);
-          this.synthesis.warnings.push(warningMsg);
+          this.synthesis.warnings.push(warn);
       }
 
   }
 
 
-  
+
   checkStock(){
 
       var alertMsg = "Les produits suivants ne sont plus en stock chez le client : ";
@@ -151,7 +152,7 @@ export class SynthesisPage {
           alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
           this.alertFound = true;
       }
-        
+
       }
 
       if(this.alertFound == true){
