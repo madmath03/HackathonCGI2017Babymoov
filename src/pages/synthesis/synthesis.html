@@ -24,9 +24,9 @@
     <ion-icon name="warning"></ion-icon>
     {{ item.title }}
   </ion-card-header>
-    <span *ngFor="let msg of item.message">
+    <div *ngFor="let msg of item.message">
       {{ msg }}
-    </span>
+    </div>
   </ion-card>
 
   <ion-card *ngFor="let item of synthesis.notes" class="notes">

@@ -149,7 +149,7 @@ export class SynthesisPage {
     // TODO Real analysis
 
     this.checkPriceDiff();
-    this.checkStock();
+    //this.checkStock();
 
     //this.synthesis.notes.push('Test Note');
     //this.synthesis.advices.push('Test Advice');
@@ -183,22 +183,25 @@ export class SynthesisPage {
 
   checkStock(){
 
-      var alertMsg = "Les produits suivants ne sont plus en stock chez le client : ";
+        var warningMsg = "";
+      var warn ={title : "Les produits suivants ne sont plus en stock chez le client : ",message :[]};
 
       for (var _i = 0; _i < this.synthesis.items.length; _i++) {
         var quantity = this.synthesis.items[_i].quantity;
 
         if (quantity == 0){
-          alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
-          this.alertFound = true;
+          //alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+          warn.message.push(this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ");
+         this.warningFound = true;
       }
 
       }
 
-      if(this.alertFound == true){
-        alertMsg = alertMsg.substring(0, alertMsg.length - 2);
-        this.synthesis.alerts.push(alertMsg);
-      }
+
+            if(this.warningFound){
+                warningMsg = warningMsg.substring(0, warningMsg.length - 2);
+                this.synthesis.warnings.push(warn);
+            }
 
   }
 
