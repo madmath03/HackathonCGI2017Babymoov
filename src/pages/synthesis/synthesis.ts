@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
+import 'rxjs/Rx';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { Distributor } from '../distributors/distributors';
@@ -17,9 +22,9 @@ export class Synthesis {
     public notes: Array<string> = [],
     public advices: Array<string> = []
   ) {
-    this.title = 'Synthèse' 
-      + (this.distributor == null ? '' : ' ' + this.distributor.distributor) 
-      + ' ' 
+    this.title = 'Synthèse'
+      + (this.distributor == null ? '' : ' ' + this.distributor.distributor)
+      + ' '
       + this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
   }
 
@@ -77,6 +82,17 @@ export class SynthesisPage {
     */
   }
 
+  showMessage(text, title='Echec') {
+    //this.loading.dismiss();
+
+    let alert = this._alertCtrl.create({
+      title: title,
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present(prompt);
+  }
+
   shareSynthesis() {
     var message: string = '';
 
@@ -101,13 +117,23 @@ export class SynthesisPage {
     for (var advice of this.synthesis.advices) {
       message = message + '\n' + advice;
     }
-    
-    this._socialSharing.share(message, this.synthesis.title);
+
+    console.log(message);
+
+    this._socialSharing.share(message, this.synthesis.title).then(() => {
+      // Success!
+      console.log('Share successful!');
+    }).catch((reason) => {
+      // Error!
+      console.log('Something went wrong!');
+      console.log(reason);
+      this.showMessage('Une erreur c\'est produite durant le partage!');
+    });
   }
 
   initSynthesis() {
     // TODO Real analysis
-    
+
     this.checkPriceDiff();
     this.checkStock();
 
@@ -115,47 +141,47 @@ export class SynthesisPage {
     //this.synthesis.advices.push('Test Advice');
   }
 
-  checkPriceDiff(){
+  checkPriceDiff() {
 
-      var warningMsg = "Les produits suivants sont vendus en dessus du prix de référence : ";
-      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
-        var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
-        var actualPrice = this.synthesis.items[_i].actualPrice;
-        
-        if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice){
-          if(recommendedPrice > actualPrice){
-           warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
-           this.warningFound = true;
-          }
+    var warningMsg = "Les produits suivants sont vendus en dessus du prix de référence : ";
+    for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+      var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
+      var actualPrice = this.synthesis.items[_i].actualPrice;
+
+      if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice) {
+        if (recommendedPrice > actualPrice) {
+          warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+          this.warningFound = true;
         }
-        
       }
 
-      if(this.warningFound){
-          this.synthesis.warnings.push(warningMsg);
-      }
+    }
+
+    if (this.warningFound) {
+      this.synthesis.warnings.push(warningMsg);
+    }
 
   }
 
 
-  
-  checkStock(){
 
-      var alertMsg = "Les produits suivants ne sont plus en stock chez le client : ";
+  checkStock() {
 
-      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
-        var quantity = this.synthesis.items[_i].quantity;
+    var alertMsg = "Les produits suivants ne sont plus en stock chez le client : ";
 
-        if (quantity == 0){
-          alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
-          this.alertFound = true;
-      }
-        
+    for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+      var quantity = this.synthesis.items[_i].quantity;
+
+      if (quantity == 0) {
+        alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+        this.alertFound = true;
       }
 
-      if(this.alertFound == true){
-        this.synthesis.alerts.push(alertMsg);
-      }
+    }
+
+    if (this.alertFound == true) {
+      this.synthesis.alerts.push(alertMsg);
+    }
 
   }
 
