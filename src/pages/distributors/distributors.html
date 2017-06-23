@@ -5,8 +5,7 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Trouver une enseigne" class="search-distributors"></ion-searchbar>
-  <div id="map" data-tap-disabled="true"></div>
-
+  <div #map id="map"></div>
   <ion-card *ngFor="let item of items">
     <ion-list (click)="itemTapped($event, item)">
       <div style="float : left">
@@ -22,6 +21,9 @@
           </div>
           <div style="text-align : right">
             {{item.postalCode + ' ' + item.city}}
+          </div>
+          <div style="text-align : right">
+            {{item.distance + ' km'}}
           </div>
         </div>
       </div>
