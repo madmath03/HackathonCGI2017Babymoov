@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 import { Distributor } from '../distributors/distributors';
 import { Product } from '../product-detail/product-detail';
 
@@ -9,20 +11,20 @@ export class Synthesis {
     public distributor: Distributor,
     public items: Array<Product>,
     public date: Date = new Date(),
+    public title: string = null,
     public alerts: Array<string> = [],
     public warnings: Array<string> = [],
     public notes: Array<string> = [],
     public advices: Array<string> = []
-  ) { }
+  ) {
+    this.title = 'Synthèse' 
+      + (this.distributor == null ? '' : ' ' + this.distributor.distributor) 
+      + ' ' 
+      + this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
+  }
 
 }
 
-/**
- * Generated class for the SynthesisPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-synthesis',
@@ -32,10 +34,13 @@ export class SynthesisPage {
   //private loading: Loading;
   synthesis: Synthesis = null;
   ready: boolean = false;
+  warningFound: boolean = false;
+  alertFound: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _alertCtrl: AlertController,
-    private _loadingCtrl: LoadingController) {
+    private _loadingCtrl: LoadingController,
+    private _socialSharing: SocialSharing) {
     // If we navigated to this page, we might have items available as a nav param
     this.synthesis = new Synthesis(
       navParams.get('distributor'),
@@ -72,12 +77,88 @@ export class SynthesisPage {
     */
   }
 
+  shareSynthesis() {
+    var message: string = '';
+
+    for (var alert of this.synthesis.alerts) {
+      message = message + '\n' + alert;
+    }
+
+    message = message + '\n';
+
+    for (var warning of this.synthesis.warnings) {
+      message = message + '\n' + warning;
+    }
+
+    message = message + '\n';
+
+    for (var note of this.synthesis.notes) {
+      message = message + '\n' + note;
+    }
+
+    message = message + '\n';
+
+    for (var advice of this.synthesis.advices) {
+      message = message + '\n' + advice;
+    }
+    
+    this._socialSharing.share(message, this.synthesis.title);
+  }
+
   initSynthesis() {
     // TODO Real analysis
-    this.synthesis.alerts.push('Test Alert');
-    this.synthesis.warnings.push('Test Warning');
-    this.synthesis.notes.push('Test Note');
-    this.synthesis.advices.push('Test Advice');
+    
+    this.checkPriceDiff();
+    this.checkStock();
+
+    //this.synthesis.notes.push('Test Note');
+    //this.synthesis.advices.push('Test Advice');
+  }
+
+  checkPriceDiff(){
+
+      var warningMsg = "Les produits suivants sont vendus en dessus du prix de référence : ";
+      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+        var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
+        var actualPrice = this.synthesis.items[_i].actualPrice;
+        
+        if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice){
+          if(recommendedPrice > actualPrice){
+           warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+           this.warningFound = true;
+          }
+        }
+        
+      }
+
+      if(this.warningFound){
+          warningMsg = warningMsg.substring(0, warningMsg.length - 2);
+          this.synthesis.warnings.push(warningMsg);
+      }
+
+  }
+
+
+  
+  checkStock(){
+
+      var alertMsg = "Les produits suivants ne sont plus en stock chez le client : ";
+
+      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+        var quantity = this.synthesis.items[_i].quantity;
+
+        if (quantity == 0){
+          alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+          this.alertFound = true;
+      }
+        
+      }
+
+      if(this.alertFound == true){
+        alertMsg = alertMsg.substring(0, alertMsg.length - 2);
+        this.synthesis.alerts.push(alertMsg);
+      }
+
   }
 
 }
