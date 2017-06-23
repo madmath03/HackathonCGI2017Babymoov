@@ -32,6 +32,8 @@ export class SynthesisPage {
   //private loading: Loading;
   synthesis: Synthesis = null;
   ready: boolean = false;
+  warningFound: boolean = false;
+  alertFound: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _alertCtrl: AlertController,
@@ -74,10 +76,56 @@ export class SynthesisPage {
 
   initSynthesis() {
     // TODO Real analysis
-    this.synthesis.alerts.push('Test Alert');
-    this.synthesis.warnings.push('Test Warning');
-    this.synthesis.notes.push('Test Note');
-    this.synthesis.advices.push('Test Advice');
+    
+    this.checkPriceDiff();
+    this.checkStock();
+
+    //this.synthesis.notes.push('Test Note');
+    //this.synthesis.advices.push('Test Advice');
+  }
+
+  checkPriceDiff(){
+
+      var warningMsg = "Les produits suivants sont vendus en dessus du prix de référence : ";
+      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+        var recommendedPrice = this.synthesis.items[_i].recommendedPrice;
+        var actualPrice = this.synthesis.items[_i].actualPrice;
+        
+        if (this.synthesis.items[_i].starRating == 5 && recommendedPrice != actualPrice){
+          if(recommendedPrice > actualPrice){
+           warningMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+           this.warningFound = true;
+          }
+        }
+        
+      }
+
+      if(this.warningFound){
+          this.synthesis.warnings.push(warningMsg);
+      }
+
+  }
+
+
+  
+  checkStock(){
+
+      var alertMsg = "Les produits suivants ne sont plus en stock chez le client : ";
+
+      for (var _i = 0; _i < this.synthesis.items.length; _i++) {
+        var quantity = this.synthesis.items[_i].quantity;
+
+        if (quantity == 0){
+          alertMsg += this.synthesis.items[_i].description + " (ref " + this.synthesis.items[_i].ref + "), ";
+          this.alertFound = true;
+      }
+        
+      }
+
+      if(this.alertFound == true){
+        this.synthesis.alerts.push(alertMsg);
+      }
+
   }
 
 }
