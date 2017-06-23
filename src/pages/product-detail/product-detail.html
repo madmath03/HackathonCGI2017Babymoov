@@ -1,14 +1,13 @@
 <ion-content *ngIf="temporaryItem" padding>
-    <ion-title>
+    <ion-title style="margin-top:30px;">
         {{temporaryItem.description}}
-
-        <ion-fab top right>
-            <button ion-fab (click)="closeModal()">
-              <ion-icon name="close"></ion-icon>
-            </button>
-        </ion-fab>
     </ion-title>
 
+            <ion-fab top right edge>
+                <button ion-fab mini (click)="closeModal()">
+                  <ion-icon name="close"></ion-icon>
+                </button>
+            </ion-fab>
     <div>
         <img src={{temporaryItem.photo}} style="width : 240px; margin: auto; display:block;" />
     </div>

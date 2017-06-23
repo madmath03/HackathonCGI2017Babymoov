@@ -12,8 +12,8 @@ export class Product {
     public recommendedPriceP: number = 0,
     public recommendedPriceM: number = 0,
     public oldQty: number = null,
-    public actualPrice: number = 100,
-    public quantity: number = 0,
+    public actualPrice: number = null,
+    public quantity: number = null,
     public found: boolean = false) {
   }
 }

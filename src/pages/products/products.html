@@ -10,19 +10,13 @@
     </button>
   </ion-fab>
 
-  <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }">
+  <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }" (click)="itemTapped($event, item)">
     <ion-list>
-      <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
-      {{item.description}}
-
-      <ion-fab *ngIf="selectedItem" top right>
-        <button ion-fab (click)="itemTapped($event, item)">
-              <ion-icon name="create"></ion-icon>
-            </button>
-      </ion-fab>
-      <div style="padding-left:5px">
-        <div class="item-note">
-          <span class="little" *ngIf="item.oldQty !=null">
+        <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
+        {{item.description}}
+        <div style="padding-left:5px">
+          <div class="item-note">
+            <span class="little" *ngIf="item.oldQty !=null">
               Prix recommandé:<span [ngClass]="{'red' : (item.recommendedPriceP < item.actualPrice || item.recommendedPriceM > item.actualPrice) }"> {{item.recommendedPrice}} €</span>
           </span>
           <span class="little" *ngIf="item.oldQty ==null">
