@@ -101,7 +101,7 @@ export class DistributorsPage {
       data => {
         data.forEach((item) => {
           items.push(item);
-          this.addMarker(item.lattitude, item.longitude);
+          this.addMarker(item.lattitude, item.longitude,false,item.photo);
         });
         this.applyHaversine(items);
       },
@@ -149,18 +149,35 @@ export class DistributorsPage {
     this.directionsDisplay.setMap(this.map);
     this.items = this.loadAllDistributors();
 
-    this.addMarker(this.latitude, this.longitude);
+    this.addMarker(this.latitude, this.longitude,true,null);
   }
 
-  addMarker(lat: number, lng: number): void {
+  addMarker(lat: number, lng: number, user:boolean, photo:any): void {
 
     let latLng = new google.maps.LatLng(lat, lng);
-
-    let marker = new google.maps.Marker({
+    var marker;
+    if(user){
+      let marker = new google.maps.Marker({
+      icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: latLng
-    });
+      });
+    }else{
+      var icon = {
+    url: photo, // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+      let marker = new google.maps.Marker({
+        icon:icon,
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+      });
+    }
 
     this.markers.push(marker);  
       
