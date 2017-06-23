@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { ModalController, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { ModalController, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/do';
@@ -11,6 +11,7 @@ import { BarcodeScanner, BarcodeScannerOptions, BarcodeScanResult } from '@ionic
 
 import { Distributor } from '../distributors/distributors';
 import { Product, ProductDetailPage } from '../product-detail/product-detail';
+import { ProductLookupPage } from '../product-lookup/product-lookup';
 import { SynthesisPage } from '../synthesis/synthesis';
 
 @Component({
@@ -18,7 +19,7 @@ import { SynthesisPage } from '../synthesis/synthesis';
   templateUrl: 'products.html'
 })
 export class ProductsPage {
-  private loading: Loading;
+  //private loading: Loading;
   selectedItem: Distributor = null;
   items: Array<Product>;
 
@@ -191,6 +192,33 @@ export class ProductsPage {
     }
   }
 
+  searchProduct(event) {
+    let productModal = this._modalCtrl.create(ProductLookupPage);
+
+    productModal.onDidDismiss(data => {
+      if (data) {
+        let product: Product = this.findProduct(data);
+        this.checkProduct(product);
+      }
+    });
+
+    productModal.present();
+  }
+
+  checkProduct(product: Product) {
+    if (product) {
+      if (product.found) {
+        console.log('Product ' + product.description + ' added.');
+      } else {
+        console.log('Unknown product ' + product.description);
+
+        this.showMessage('Référence produit "' + product.description + '" inconnue!');
+      }
+    } else {
+      console.log('No product found.');
+    }
+  }
+
   scanProduct(event) {
     //this.loading.dismiss();
 
@@ -198,17 +226,7 @@ export class ProductsPage {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
       let product: Product = this.findProduct(barcodeData);
-      if (product) {
-        if (product.found) {
-          console.log('Product ' + product.description + ' added.');
-        } else {
-          console.log('Unknown product ' + product.description);
-
-          this.showMessage('Référence produit "' + product.description + '" inconnue!');
-        }
-      } else {
-        console.log('No product found.');
-      }
+      this.checkProduct(product);
     }, (err) => {
       // An error occurred
       console.log(new Date().toJSON() + ': An error occurred !');

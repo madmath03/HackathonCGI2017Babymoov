@@ -1,0 +1,35 @@
+page-product-lookup {
+
+    .title {
+        padding-bottom: 20px;
+    }
+
+    .product-lookup-box {
+        background: white;
+        border-radius: 30px;
+        position: absolute;
+        bottom:  60px;
+        left : 5%;
+        right :5%;
+    }
+
+    .validate-col {
+        border-radius: 30px;
+        position: absolute;
+        bottom:  5px;
+        left : 5%;
+        right : 5%;
+        width : auto;
+    }
+
+    .validate-btn {
+        background: #f474a2;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+    }
+
+    .validate-btn:hover {
+        background: #80b819;
+    }
+
+}

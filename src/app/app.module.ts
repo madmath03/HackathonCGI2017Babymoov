@@ -11,9 +11,10 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import { DistributorsPage } from '../pages/distributors/distributors';
 import { ProductsPage } from '../pages/products/products';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
-import { DistributorsPage } from '../pages/distributors/distributors';
+import { ProductLookupPage } from '../pages/product-lookup/product-lookup';
 import { SynthesisPage } from '../pages/synthesis/synthesis';
 
 import { AuthService } from '../providers/auth-service';
@@ -28,6 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DistributorsPage,
     ProductsPage,
     ProductDetailPage,
+    ProductLookupPage,
     SynthesisPage
   ],
   imports: [
@@ -43,6 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DistributorsPage,
     ProductsPage,
     ProductDetailPage,
+    ProductLookupPage,
     SynthesisPage
   ],
   providers: [
