@@ -76,6 +76,7 @@ export class ProductsPage {
   }
 
   presentProductModal(item: Product) {
+    this.lookupItem = null;
     if (item.starRating !== 5) {
       return;
     }
@@ -272,6 +273,20 @@ export class ProductsPage {
       console.log(JSON.stringify(error.json()));
     } else {
       console.dir(error);
+    }
+  }
+
+  onCodebarSearchChange(event){
+    if(this.lookupItem.length == 13){
+      var product = this.items.find(x=>{return x.barcode == this.lookupItem});
+      this.checkProduct(product);
+      if (product != null){
+        this.presentProductModal(product);
+        }else{
+          this.showMessage('Référence produit "' + this.lookupItem + '" inconnue!');
+
+        }
+        this.lookupItem = null;
     }
   }
 }
