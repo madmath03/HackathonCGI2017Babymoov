@@ -1,6 +1,6 @@
-<ion-content *ngIf="selectedItem" padding>
+<ion-content *ngIf="temporaryItem" padding>
     <ion-title>
-        {{selectedItem.description}}
+        {{temporaryItem.description}}
 
         <ion-fab top right>
             <button ion-fab (click)="closeModal()">
@@ -11,21 +11,21 @@
 
     <form (ngSubmit)="validate()" #productForm="ngForm">
         <ion-row>
-            <div class="login-box">
+            <div class="product-detail-box">
 
                 <ion-item>
                     <ion-label>Prix recommandé</ion-label>
-                    <ion-label>{{ selectedItem.recommendedPrice }}</ion-label>
+                    <ion-label>{{ temporaryItem.recommendedPrice }}€</ion-label>
                 </ion-item>
 
                 <ion-item>
                     <ion-label floating>Prix de vente</ion-label>
-                    <ion-input class="border-bottom" type="number" name="actualPrice" [(ngModel)]="selectedItem.actualPrice" required></ion-input>
+                    <ion-input class="border-bottom" type="number" name="actualPrice" [(ngModel)]="temporaryItem.actualPrice" required></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label floating>Quantité</ion-label>
-                    <ion-input class="border-bottom" type="number" name="quantity" [(ngModel)]="selectedItem.quantity" required></ion-input>
+                    <ion-input class="border-bottom" type="number" name="quantity" [(ngModel)]="temporaryItem.quantity" required></ion-input>
                 </ion-item>
             </div>
         </ion-row>

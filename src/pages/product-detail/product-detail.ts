@@ -31,11 +31,18 @@ export class Product {
 })
 export class ProductDetailPage {
   selectedItem: Product = null;
+  temporaryItem: Product = null;
 
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     console.log(this.selectedItem);
+
+    this.temporaryItem = new Product(this.selectedItem.description, this.selectedItem.barcode, this.selectedItem.ref, 
+      this.selectedItem.photo, this.selectedItem.starRating, 
+      this.selectedItem.recommendedPrice, this.selectedItem.recommendedPriceP, this.selectedItem.recommendedPriceM, 
+      this.selectedItem.oldQty, this.selectedItem.actualPrice, this.selectedItem.quantity, this.selectedItem.found
+    );
   }
 
   ionViewDidLoad() {
@@ -47,6 +54,9 @@ export class ProductDetailPage {
   }
 
   validate() {
+    this.selectedItem.actualPrice = this.temporaryItem.actualPrice;
+    this.selectedItem.quantity = this.temporaryItem.quantity;
+
     this.viewCtrl.dismiss(this.selectedItem);
   }
 
