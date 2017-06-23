@@ -345,7 +345,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146921.jpg",
                 "barcode": "3661276146921",
                 "recommendedPrice": 16.89,
-                "oldQty": 1,
+                "oldQty": 0,
                 "starRating": 5
             },
             {
@@ -354,8 +354,7 @@
                 "photo": "https://www.sauvelnatal.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/6/3661276146938.jpg",
                 "barcode": "3661276146938",
                 "recommendedPrice": 16.89,
-                "oldQty": 1,
-                "starRating": 5
+                "starRating": 3
             },
             {
                 "ref": "A001122",
