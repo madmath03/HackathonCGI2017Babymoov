@@ -17,15 +17,21 @@
         <div style="padding-left:5px">
           <div class="item-note">
             <span class="little" *ngIf="item.oldQty !=null">
-              Prix recommandé:<span [ngClass]="{'red' : (item.recommendedPriceP < item.actualPrice || item.recommendedPriceM > item.actualPrice) }"> {{item.recommendedPrice}} €</span>
-          </span>
+              {{item.recommendedPrice}} €
+            </span>
+            <span  *ngIf="item.actualPrice !=null">
+              <span [ngClass]="{'red' : (item.recommendedPriceP < item.actualPrice || item.recommendedPriceM > item.actualPrice) }"> {{item.actualPrice}} €</span>
+            </span>
           <span class="little" *ngIf="item.oldQty ==null">
               &nbsp;
             </span>
         </div>
         <div class="item-note">
           <span class="little" *ngIf="item.oldQty !=null">
-                Dernière quantité: <span [ngClass]="{'red' : item.oldQty == item.quantity && item.quantity == 0 }">{{item.oldQty}}</span>
+                 {{'Dernière quantité: ' +item.oldQty}}
+          </span>
+          <span  *ngIf="item.quantity !=null">
+            <span [ngClass]="{'red' : item.oldQty == item.quantity && item.quantity == 0 }">{{item.quantity}}</span>
           </span>
           <span class="little" *ngIf="item.oldQty ==null">
                 &nbsp;

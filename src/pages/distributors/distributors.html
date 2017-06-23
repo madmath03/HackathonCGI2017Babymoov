@@ -6,6 +6,7 @@
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Trouver une enseigne" class="search-distributors"></ion-searchbar>
   <div #map id="map"></div>
+  <div  class="div-distris">
   <ion-card *ngFor="let item of items">
     <ion-list (click)="itemTapped($event, item)">
       <div style="float : left">
@@ -29,4 +30,5 @@
       </div>
     </ion-list>
   </ion-card>
+</div>
 </ion-content>
