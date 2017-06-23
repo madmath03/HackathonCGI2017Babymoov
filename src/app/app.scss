@@ -118,3 +118,27 @@ page-product-lookup.ion-page > ion-content {
 
   }
 }
+.alert-md .alert-wrapper {
+    border-radius: 30px;
+    max-width: 280px;
+background-color: #97010A;
+box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+color: white;
+
+}
+.alert-md .alert-button {
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+    background-color: red;
+    margin: 0 8px 0 0;
+    padding: 10px;
+    span.button-inner{
+        text-align: center;
+        display: block;
+    }
+}

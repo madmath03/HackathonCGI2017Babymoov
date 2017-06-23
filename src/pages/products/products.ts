@@ -234,7 +234,7 @@ export class ProductsPage {
       } else {
         console.log('Unknown product ' + product.description);
 
-        this.showMessage('Référence produit "' + product.description + '" inconnue!');
+        this.showMessage(product.description + ' inconnue!');
       }
     } else {
       console.log('No product found.');
@@ -261,7 +261,6 @@ export class ProductsPage {
     //this.loading.dismiss();
 
     let alert = this._alertCtrl.create({
-      title: 'Echec',
       subTitle: text,
       buttons: ['OK']
     });
@@ -283,7 +282,7 @@ export class ProductsPage {
       if (product != null){
         this.presentProductModal(product);
         }else{
-          this.showMessage('Référence produit "' + this.lookupItem + '" inconnue!');
+                this.showMessage(this.lookupItem + ' inconnue!');
 
         }
         this.lookupItem = null;
