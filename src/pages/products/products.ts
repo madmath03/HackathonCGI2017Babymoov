@@ -76,6 +76,7 @@ export class ProductsPage {
   }
 
   presentProductModal(item: Product) {
+    this.lookupItem = null;
     if (item.starRating !== 5) {
       return;
     }
@@ -236,7 +237,7 @@ export class ProductsPage {
       } else {
         console.log('Unknown product ' + product.description);
 
-        this.showMessage('Référence produit "' + product.description + '" inconnue!');
+        this.showMessage(product.description + ' inconnue!');
       }
     } else {
       console.log('No product found.');
@@ -264,7 +265,6 @@ export class ProductsPage {
     //this.loading.dismiss();
 
     let alert = this._alertCtrl.create({
-      title: 'Echec',
       subTitle: text,
       buttons: ['OK']
     });
@@ -276,6 +276,20 @@ export class ProductsPage {
       console.log(JSON.stringify(error.json()));
     } else {
       console.dir(error);
+    }
+  }
+
+  onCodebarSearchChange(event){
+    if(this.lookupItem.length == 13){
+      var product = this.items.find(x=>{return x.barcode == this.lookupItem});
+      this.checkProduct(product);
+      if (product != null){
+        this.presentProductModal(product);
+        }else{
+                this.showMessage(this.lookupItem + ' inconnue!');
+
+        }
+        this.lookupItem = null;
     }
   }
 }
