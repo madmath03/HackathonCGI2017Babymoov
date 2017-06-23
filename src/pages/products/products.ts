@@ -192,7 +192,7 @@ export class ProductsPage {
   }
 
   scanProduct(event) {
-    this.loading.dismiss();
+    //this.loading.dismiss();
 
     this._barcodeScanner.scan(this.options).then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
@@ -218,7 +218,7 @@ export class ProductsPage {
   }
 
   showMessage(text) {
-    this.loading.dismiss();
+    //this.loading.dismiss();
 
     let alert = this._alertCtrl.create({
       title: 'Echec',

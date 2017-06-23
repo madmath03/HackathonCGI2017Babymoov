@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import { Distributor } from '../distributors/distributors';
 import { Product } from '../product-detail/product-detail';
@@ -29,7 +29,7 @@ export class Synthesis {
   templateUrl: 'synthesis.html',
 })
 export class SynthesisPage {
-  private loading: Loading;
+  //private loading: Loading;
   synthesis: Synthesis = null;
   ready: boolean = false;
 
@@ -70,12 +70,6 @@ export class SynthesisPage {
     });
     this.loading.present();
     */
-  }
-
-  convertDate(inputFormat) {
-    function pad(s) { return (s < 10) ? '0' + s : s; }
-    var d = new Date(inputFormat);
-    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
   }
 
   initSynthesis() {
