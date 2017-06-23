@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import { Http, Response } from '@angular/http';
 import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import 'rxjs/Rx';
@@ -7,17 +7,25 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner, BarcodeScannerOptions, BarcodeScanResult } from '@ionic-native/barcode-scanner';
 
 import { Product, ProductDetailPage } from '../product-detail/product-detail';
 
 @Component({
-  selector: 'page-product',
-  templateUrl: 'product.html'
+  selector: 'page-products',
+  templateUrl: 'products.html'
 })
-export class ProductPage {
+export class ProductsPage {
   selectedItem: any = null;
   items: Array<Product>;
+
+  options: BarcodeScannerOptions = {
+    preferFrontCamera: false,
+    showTorchButton: true,
+    prompt: 'Scannez un code barre',
+    formats: 'EAN_13',
+    resultDisplayDuration: 500
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _alertCtrl: AlertController, private _modalCtrl: ModalController,
@@ -58,7 +66,7 @@ export class ProductPage {
           data.forEach((item) => {
             items.push(new Product(
               item.description, item.barcode, item.ref,
-              item.photo, item.starRating, item.recommendedPrice, (item.recommendedPrice + item.recommendedPrice*0.1), (item.recommendedPrice - item.recommendedPrice*0.1), item.oldQty
+              item.photo, item.starRating, item.recommendedPrice, (item.recommendedPrice + item.recommendedPrice * 0.1), (item.recommendedPrice - item.recommendedPrice * 0.1), item.oldQty
             ));
           });
         },
@@ -79,7 +87,7 @@ export class ProductPage {
                 product.found = false;
                 items.push(new Product(
                   product.description, product.barcode, product.ref,
-                  product.photo, product.starRating, product.recommendedPrice, (product.recommendedPrice+ product.recommendedPrice*0.1), (product.recommendedPrice- product.recommendedPrice*0.1), product.oldQty
+                  product.photo, product.starRating, product.recommendedPrice, (product.recommendedPrice + product.recommendedPrice * 0.1), (product.recommendedPrice - product.recommendedPrice * 0.1), product.oldQty
                 ));
               }
             }
@@ -96,7 +104,7 @@ export class ProductPage {
     return items;
   }
 
-  findProduct(barcodeData: BarcodeScanResult) : Product {
+  findProduct(barcodeData: BarcodeScanResult): Product {
     if (barcodeData.cancelled) {
       return null;
     }
@@ -137,7 +145,7 @@ export class ProductPage {
   }
 
   scanProduct(event) {
-    this._barcodeScanner.scan().then((barcodeData: BarcodeScanResult) => {
+    this._barcodeScanner.scan(this.options).then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
       let product: Product = this.findProduct(barcodeData);

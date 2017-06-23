@@ -4,7 +4,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Trouver une enseigne" class="search-distributors"></ion-searchbar>
         <div id="map" data-tap-disabled="true"></div>
 
 
@@ -23,7 +23,7 @@
           {{item.address}}
         </div>
         <div style="text-align : right">
-          {{item.postalCode + item.city}}
+          {{item.postalCode + ' ' + item.city}}
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 
-import { MagasinPage } from '../magasin/magasin';
+import { DistributorsPage } from '../distributors/distributors';
 
 import { AuthService } from '../../providers/auth-service';
 
@@ -34,9 +34,9 @@ export class LoginPage {
     this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
-        this.nav.setRoot(MagasinPage);
+        this.nav.setRoot(DistributorsPage);
       } else {
-        this.showError("Accès refusé");
+        this.showError('Accès refusé');
       }
     },
       error => {

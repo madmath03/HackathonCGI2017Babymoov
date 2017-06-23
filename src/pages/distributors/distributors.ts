@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
 
-import { ProductPage } from '../product/product';
+import { ProductsPage } from '../products/products';
 
 @Component({
-  selector: 'page-magasin',
-  templateUrl: 'magasin.html'
+  selector: 'page-distributors',
+  templateUrl: 'distributors.html'
 })
-export class MagasinPage {
+export class DistributorsPage {
   selectedItem: any;
   posOptionsLat: any;
   posOptionsLong: any;
@@ -42,7 +42,7 @@ export class MagasinPage {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ProductPage, {
+    this.navCtrl.push(ProductsPage, {
       item: item
     });
   }
@@ -63,15 +63,6 @@ export class MagasinPage {
       () => console.log('Distributors load ended.')
       );
 
-    /*
-        for (let i = 1; i < 11; i++) {
-          items.push({
-            title: 'Item ' + i,
-            note: 'This is item #' + i,
-            icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-          });
-        }
-    */
     return items;
   }
 

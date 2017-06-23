@@ -38,11 +38,12 @@ export class ProductDetailPage {
     this.selectedItem = navParams.get('item');
     console.log(this.selectedItem);
 
-    this.temporaryItem = new Product(this.selectedItem.description, this.selectedItem.barcode, this.selectedItem.ref, 
-      this.selectedItem.photo, this.selectedItem.starRating, 
-      this.selectedItem.recommendedPrice, this.selectedItem.recommendedPriceP, this.selectedItem.recommendedPriceM, 
+    this.temporaryItem = new Product(this.selectedItem.description, this.selectedItem.barcode, this.selectedItem.ref,
+      this.selectedItem.photo, this.selectedItem.starRating,
+      this.selectedItem.recommendedPrice, this.selectedItem.recommendedPriceP, this.selectedItem.recommendedPriceM,
       this.selectedItem.oldQty, this.selectedItem.actualPrice, this.selectedItem.quantity, this.selectedItem.found
     );
+    console.log(this.temporaryItem);
   }
 
   ionViewDidLoad() {

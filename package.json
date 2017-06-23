@@ -1,8 +1,8 @@
 {
     "name": "hackathoncgi2017babymoov",
-    "version": "0.0.1",
-    "author": "Ionic Framework",
-    "homepage": "http://ionicframework.com/",
+    "version": "0.8.1",
+    "author": "Baby Team",
+    "homepage": "https://github.com/madmath03/HackathonCGI2017Babymoov",
     "private": true,
     "scripts": {
         "clean": "ionic-app-scripts clean",

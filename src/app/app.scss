@@ -37,9 +37,12 @@ ul {
 rating{
   float : right;
 }
-.fab-md{
+.fab-md, .fab-ios{
 background-color :#F474A2;
 margin-right: 20px;
+}
+.fab-md:hover, .fab-md:active, .fab-ios:hover, .fab-ios:active{
+background-color :#80b819;
 }
 .product-done, .product-undone {
   position: relative;

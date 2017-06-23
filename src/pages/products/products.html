@@ -1,12 +1,9 @@
 <ion-header>
-  <button *ngIf="!!!selectedItem" ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
   <img src="assets/images/logo-babymoov.jpg" style="height : 50px" />
   <ion-title>{{ selectedItem == null ? 'Produits' : selectedItem.title }}</ion-title>
 </ion-header>
 
-<ion-content class="grey">
+<ion-content class="products-content">
   <ion-fab *ngIf="selectedItem" top right edge>
     <button ion-fab (click)="scanProduct($event)">
       <ion-icon name="camera"></ion-icon>
@@ -18,7 +15,7 @@
         <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
         {{item.description}}
 
-        <ion-fab top right>
+        <ion-fab *ngIf="selectedItem" top right>
           <button ion-fab (click)="itemTapped($event, item)">
               <ion-icon name="create"></ion-icon>
             </button>

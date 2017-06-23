@@ -9,6 +9,10 @@
         </ion-fab>
     </ion-title>
 
+    <div>
+        <img src={{temporaryItem.photo}} style="width : 240px; margin: auto; display:block;" />
+    </div>
+
     <form (ngSubmit)="validate()" #productForm="ngForm">
         <ion-row>
             <div class="product-detail-box">
