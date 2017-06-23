@@ -12,35 +12,41 @@
 
   <ion-card *ngFor="let item of items" [ngClass]="{'product-done' : item.found == true , 'product-undone' : item.found == false }">
     <ion-list>
-        <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
-        {{item.description}}
+      <div style="float : left; margin-top : 20px;margin-right : 5px;margin-left : 5px;"><img src={{item.photo}} style="width : 60px" /></div>
+      {{item.description}}
 
-        <ion-fab *ngIf="selectedItem" top right>
-          <button ion-fab (click)="itemTapped($event, item)">
+      <ion-fab *ngIf="selectedItem" top right>
+        <button ion-fab (click)="itemTapped($event, item)">
               <ion-icon name="create"></ion-icon>
             </button>
-        </ion-fab>
-        <div style="padding-left:5px">
-          <div class="item-note">
-            <span class="little" *ngIf="item.oldQty !=null">
+      </ion-fab>
+      <div style="padding-left:5px">
+        <div class="item-note">
+          <span class="little" *ngIf="item.oldQty !=null">
               Prix recommandé:<span [ngClass]="{'red' : (item.recommendedPriceP < item.actualPrice || item.recommendedPriceM > item.actualPrice) }"> {{item.recommendedPrice}} €</span>
-            </span>
-            <span class="little" *ngIf="item.oldQty ==null">
+          </span>
+          <span class="little" *ngIf="item.oldQty ==null">
               &nbsp;
             </span>
-          </div>
-          <div class="item-note">
-              <span class="little" *ngIf="item.oldQty !=null">
+        </div>
+        <div class="item-note">
+          <span class="little" *ngIf="item.oldQty !=null">
                 Dernière quantité: <span [ngClass]="{'red' : item.oldQty == item.quantity && item.quantity == 0 }">{{item.oldQty}}</span>
-              </span>
-              <span class="little" *ngIf="item.oldQty ==null">
+          </span>
+          <span class="little" *ngIf="item.oldQty ==null">
                 &nbsp;
               </span>
-          </div>
-
-          <rating [(ngModel)]="item.starRating" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
-            starIconName="star" nullable="false"> </rating>
         </div>
+
+        <rating [(ngModel)]="item.starRating" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half"
+          starIconName="star" nullable="false"> </rating>
+      </div>
     </ion-list>
   </ion-card>
+
+  <ion-row *ngIf="selectedItem">
+    <ion-col class="validate-col">
+      <button ion-button class="validate-btn" full type="submit" (click)="validate()">Terminer</button>
+    </ion-col>
+  </ion-row>
 </ion-content>

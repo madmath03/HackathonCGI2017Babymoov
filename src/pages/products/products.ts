@@ -69,6 +69,11 @@ export class ProductsPage {
     productModal.present();
   }
 
+  validate() {
+    // TODO Push to 
+    console.log('Moving to validation page');
+  }
+
   loadProducts() {
     this.showLoading();
     var items = [];
