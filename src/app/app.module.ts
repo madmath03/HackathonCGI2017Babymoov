@@ -14,6 +14,7 @@ import { LoginPage } from '../pages/login/login';
 import { ProductsPage } from '../pages/products/products';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { DistributorsPage } from '../pages/distributors/distributors';
+import { SynthesisPage } from '../pages/synthesis/synthesis';
 import { MapPage } from '../pages/map/map';
 
 import { AuthService } from '../providers/auth-service';
@@ -28,6 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DistributorsPage,
     ProductsPage,
     ProductDetailPage,
+    SynthesisPage,
     MapPage
   ],
   imports: [
@@ -43,6 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DistributorsPage,
     ProductsPage,
     ProductDetailPage,
+    SynthesisPage,
     MapPage
   ],
   providers: [
