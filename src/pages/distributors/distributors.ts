@@ -1,7 +1,8 @@
 import { Geolocation } from '@ionic-native/geolocation';
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
+import { IonicPage } from 'ionic-angular';
 
 import { ProductsPage } from '../products/products';
 
@@ -15,21 +16,37 @@ export interface Distributor {
   photo: string;
 }
 
+declare var google;
+
 @Component({
   selector: 'page-distributors',
   templateUrl: 'distributors.html'
 })
 export class DistributorsPage {
+
+  @ViewChild('map') mapElement: ElementRef;
   private loading: Loading;
   selectedItem: any;
   posOptionsLat: number;
   posOptionsLong: number;
   items: Array<Distributor>;
 
+  map: any;
+  latitude: any;
+  longitude:any;
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+  markers: any = [];
+  //items: Array<Distributor>;
+  locations:any =[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _loadingCtrl: LoadingController,
     private _geolocation: Geolocation,
     private _http: Http) {
+
+    this.latitude = 45.7892526;
+    this.longitude = 3.1060942999999996;
     // Get current position
     _geolocation.getCurrentPosition().then(pos => {
       this.posOptionsLat = pos.coords.latitude;
@@ -53,6 +70,7 @@ export class DistributorsPage {
     console.log('ionViewDidLoad DistributorsPage');
 
     this.items = this.loadAllDistributors();
+    this.initMap();
   }
 
   showLoading() {
@@ -64,7 +82,7 @@ export class DistributorsPage {
   }
 
   itemTapped(event, item: Distributor) {
-    this.showLoading();
+    //this.showLoading();
 
     // We're pushing to the products
     this.navCtrl.push(ProductsPage, {
@@ -73,7 +91,7 @@ export class DistributorsPage {
   }
 
   loadAllDistributors() {
-    this.showLoading();
+   // this.showLoading();
     console.log('Loading distributors...');
     var items = [];
 
@@ -83,10 +101,12 @@ export class DistributorsPage {
       data => {
         data.forEach((item) => {
           items.push(item);
+          this.addMarker(item.lattitude, item.longitude);
         });
+        this.applyHaversine(items);
       },
       err => this.handleErrors(err),
-      () => { console.log('Distributors load ended.'); this.loading.dismiss(); }
+      () => { console.log('Distributors load ended.'); }
       );
 
     return items;
@@ -118,6 +138,86 @@ export class DistributorsPage {
     } else if (val == '') {
       this.items = this.loadAllDistributors();
     }
+  }
+
+  initMap() {
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 13,
+      center: { lat: this.latitude, lng: this.longitude }
+    });
+
+    this.directionsDisplay.setMap(this.map);
+    this.items = this.loadAllDistributors();
+
+    this.addMarker(this.latitude, this.longitude);
+  }
+
+  addMarker(lat: number, lng: number): void {
+
+    let latLng = new google.maps.LatLng(lat, lng);
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+    });
+
+    this.markers.push(marker);  
+      
+  }
+
+  applyHaversine(locations){
+
+    let usersLocation = {
+      lat: 45.7892526, 
+      lng: 3.1060942999999996
+    };
+
+    locations.map((location) => {
+
+      let placeLocation = {
+        lat: location.lattitude,
+        lng: location.longitude
+      };
+
+      location.distance = this.getDistanceBetweenPoints(
+        usersLocation,
+        placeLocation,
+        'km'
+      ).toFixed(2);
+    });
+
+    return locations;
+  }
+
+  getDistanceBetweenPoints(start, end, units){
+
+      let earthRadius = {
+          miles: 3958.8,
+          km: 6371
+      };
+   
+      let R = earthRadius[units || 'km'];
+      let lat1 = start.lat;
+      let lon1 = start.lng;
+      let lat2 = end.lat;
+      let lon2 = end.lng;
+   
+      let dLat = this.toRad((lat2 - lat1));
+      let dLon = this.toRad((lon2 - lon1));
+      let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.toRad(lat1)) * Math.cos(this.toRad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+      let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      let d = R * c;
+   
+      return d;
+
+  }
+
+  toRad(x){
+    return x * Math.PI / 180;
   }
 
 }
