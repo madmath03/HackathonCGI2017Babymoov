@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 import { Distributor } from '../distributors/distributors';
 import { Product } from '../product-detail/product-detail';
 
@@ -9,20 +11,20 @@ export class Synthesis {
     public distributor: Distributor,
     public items: Array<Product>,
     public date: Date = new Date(),
+    public title: string = null,
     public alerts: Array<string> = [],
     public warnings: Array<string> = [],
     public notes: Array<string> = [],
     public advices: Array<string> = []
-  ) { }
+  ) {
+    this.title = 'Synthèse' 
+      + (this.distributor == null ? '' : ' ' + this.distributor.distributor) 
+      + ' ' 
+      + this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
+  }
 
 }
 
-/**
- * Generated class for the SynthesisPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-synthesis',
@@ -37,7 +39,8 @@ export class SynthesisPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private _alertCtrl: AlertController,
-    private _loadingCtrl: LoadingController) {
+    private _loadingCtrl: LoadingController,
+    private _socialSharing: SocialSharing) {
     // If we navigated to this page, we might have items available as a nav param
     this.synthesis = new Synthesis(
       navParams.get('distributor'),
@@ -72,6 +75,34 @@ export class SynthesisPage {
     });
     this.loading.present();
     */
+  }
+
+  shareSynthesis() {
+    var message: string = '';
+
+    for (var alert of this.synthesis.alerts) {
+      message = message + '\n' + alert;
+    }
+
+    message = message + '\n';
+
+    for (var warning of this.synthesis.warnings) {
+      message = message + '\n' + warning;
+    }
+
+    message = message + '\n';
+
+    for (var note of this.synthesis.notes) {
+      message = message + '\n' + note;
+    }
+
+    message = message + '\n';
+
+    for (var advice of this.synthesis.advices) {
+      message = message + '\n' + advice;
+    }
+    
+    this._socialSharing.share(message, this.synthesis.title);
   }
 
   initSynthesis() {
