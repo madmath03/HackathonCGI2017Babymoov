@@ -4,23 +4,14 @@
 </ion-header>
 
 <ion-content class="products-content">
-
-  <ion-input class="border-bottom" type="number" placeholder="Code barre" name="lookupItem" [(ngModel)]="lookupItem" required></ion-input>
-
+  <ion-input class="border-bottom add-codebar" type="number"
+   placeholder="Code barre" name="lookupItem"
+   [(ngModel)]="lookupItem" required></ion-input>
   <ion-fab top right edge>
 
-    <button ion-fab mini>
-        <ion-icon name="add"></ion-icon>
+    <button ion-fab mini (click)="scanProduct($event)">
+        <ion-icon name="camera"></ion-icon>
       </button>
-    <ion-fab-list side="left">
-      <button ion-fab (click)="scanProduct($event)">
-          <ion-icon name="camera"></ion-icon>
-        </button>
-
-      <button ion-fab (click)="searchProduct($event)">
-          <ion-icon name="create"></ion-icon>
-        </button>
-    </ion-fab-list>
 
   </ion-fab>
 
@@ -37,7 +28,7 @@
             <ion-col>
               <div class="item-note">
                 <span class="little" *ngIf="item.oldQty !=null">
-              {{item.recommendedPrice}} €
+              Prix recommandé : {{item.recommendedPrice}} €
             </span>
                 <span class="little" *ngIf="item.oldQty ==null">
               &nbsp;
