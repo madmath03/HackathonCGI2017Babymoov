@@ -11,6 +11,7 @@ import { BarcodeScanner, BarcodeScannerOptions, BarcodeScanResult } from '@ionic
 
 import { Distributor } from '../distributors/distributors';
 import { Product, ProductDetailPage } from '../product-detail/product-detail';
+import { SynthesisPage } from '../synthesis/synthesis';
 
 @Component({
   selector: 'page-products',
@@ -58,6 +59,11 @@ export class ProductsPage {
   }
 
   presentProductModal(item: Product) {
+    if (item.starRating !== 5) {
+      return;
+    }
+
+    // If top product, edit
     let productModal = this._modalCtrl.create(ProductDetailPage, {
       item: item
     });
@@ -70,8 +76,13 @@ export class ProductsPage {
   }
 
   validate() {
-    // TODO Push to 
     console.log('Moving to validation page');
+
+    // We're pushing to the synthesis
+    this.navCtrl.push(SynthesisPage, {
+      distributor: this.selectedItem,
+      items: this.items
+    });
   }
 
   loadProducts() {
@@ -148,8 +159,7 @@ export class ProductsPage {
       product = new Product(
         barcodeData.text, barcodeData.text
       );
-    } else if (product.starRating === 5) {
-      // If top product, edit
+    } else {
       this.presentProductModal(product);
     }
 
