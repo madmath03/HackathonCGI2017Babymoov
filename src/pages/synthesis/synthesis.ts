@@ -87,7 +87,10 @@ export class SynthesisPage {
     message = message + '\n';
 
     for (var warning of this.synthesis.warnings) {
-      message = message + '\n' + warning;
+      message = message + '\n' + warning.title;
+      for (var msg of warning.message) {
+        message = message + '\n\t' + msg;
+      }
     }
 
     message = message + '\n';

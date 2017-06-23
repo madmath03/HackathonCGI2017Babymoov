@@ -40,4 +40,10 @@
     </span>
   </ion-card>
 
+  <ion-row *ngIf="synthesis">
+    <ion-col class="validate-col">
+      <button ion-button class="validate-btn" full type="submit" (click)="shareSynthesis()">Partager</button>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
