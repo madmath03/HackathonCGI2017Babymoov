@@ -187,6 +187,10 @@ export class DistributorsPage {
       ).toFixed(2);
     });
 
+    locations.sort((locationA, locationB) => {
+          return locationA.distance - locationB.distance;
+        });
+
     return locations;
   }
 
