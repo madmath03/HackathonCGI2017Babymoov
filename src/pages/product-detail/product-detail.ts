@@ -57,7 +57,7 @@ export class ProductDetailPage {
   validate() {
     this.selectedItem.actualPrice = this.temporaryItem.actualPrice;
     this.selectedItem.quantity = this.temporaryItem.quantity;
-
+    this.selectedItem.found = true;
     this.viewCtrl.dismiss(this.selectedItem);
   }
 
