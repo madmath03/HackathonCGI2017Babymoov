@@ -1,32 +1,30 @@
 <ion-header>
-    <img src="assets/images/logo-babymoov.jpg" style="height : 50px" />
-    <ion-title>Magasins</ion-title>
+  <img src="assets/images/logo-babymoov.jpg" style="height : 50px" />
+  <ion-title>Magasins</ion-title>
 </ion-header>
 
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Trouver une enseigne" class="search-distributors"></ion-searchbar>
-        <div id="map" data-tap-disabled="true"></div>
+  <div id="map" data-tap-disabled="true"></div>
 
-
-
-  <ion-card *ngFor="let item of items" >
-    <ion-list  (click)="itemTapped($event, item)">
-     <div style="float : left">
-      <img src={{item.photo}} style="width : 62px"/>
-     </div>
-     <div>
-      <div style="padding:5px">
-       <div style="text-align : right">
-          {{item.distributor}}
-       </div>
-        <div style="text-align : right">
-          {{item.address}}
-        </div>
-        <div style="text-align : right">
-          {{item.postalCode + ' ' + item.city}}
+  <ion-card *ngFor="let item of items">
+    <ion-list (click)="itemTapped($event, item)">
+      <div style="float : left">
+        <img src={{item.photo}} style="width : 62px" />
+      </div>
+      <div>
+        <div style="padding:5px">
+          <div style="text-align : right">
+            {{item.distributor}}
+          </div>
+          <div style="text-align : right">
+            {{item.address}}
+          </div>
+          <div style="text-align : right">
+            {{item.postalCode + ' ' + item.city}}
+          </div>
         </div>
       </div>
-    </div>
     </ion-list>
   </ion-card>
 </ion-content>

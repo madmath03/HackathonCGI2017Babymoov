@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
+import { ModalController, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/do';
@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 
 import { BarcodeScanner, BarcodeScannerOptions, BarcodeScanResult } from '@ionic-native/barcode-scanner';
 
+import { Distributor } from '../distributors/distributors';
 import { Product, ProductDetailPage } from '../product-detail/product-detail';
 
 @Component({
@@ -16,7 +17,8 @@ import { Product, ProductDetailPage } from '../product-detail/product-detail';
   templateUrl: 'products.html'
 })
 export class ProductsPage {
-  selectedItem: any = null;
+  private loading: Loading;
+  selectedItem: Distributor = null;
   items: Array<Product>;
 
   options: BarcodeScannerOptions = {
@@ -28,12 +30,26 @@ export class ProductsPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private _alertCtrl: AlertController, private _modalCtrl: ModalController,
+    private _alertCtrl: AlertController,
+    private _loadingCtrl: LoadingController,
+    private _modalCtrl: ModalController,
     private _barcodeScanner: BarcodeScanner, private _http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ProductsPage');
 
     this.items = this.loadProducts();
+  }
+
+  showLoading() {
+    this.loading = this._loadingCtrl.create({
+      content: 'Patientez...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
   }
 
   itemTapped(event, item: Product) {
@@ -54,6 +70,7 @@ export class ProductsPage {
   }
 
   loadProducts() {
+    this.showLoading();
     var items = [];
 
     if (this.selectedItem == null) {
@@ -71,7 +88,7 @@ export class ProductsPage {
           });
         },
         err => this.handleErrors(err),
-        () => console.log('Products load ended.')
+        () => { console.log('Products load ended.'); this.loading.dismiss(); }
         );
 
     } else {
@@ -96,7 +113,7 @@ export class ProductsPage {
           items.sort(this.sortProducts);
         },
         err => this.handleErrors(err),
-        () => console.log('Products load ended.')
+        () => { console.log('Products load ended.'); this.loading.dismiss(); }
         );
 
     }
@@ -145,6 +162,8 @@ export class ProductsPage {
   }
 
   scanProduct(event) {
+    this.loading.dismiss();
+
     this._barcodeScanner.scan(this.options).then((barcodeData: BarcodeScanResult) => {
       // Success! Barcode data is here
       console.log(new Date().toJSON() + ': Success !');
@@ -169,6 +188,8 @@ export class ProductsPage {
   }
 
   showMessage(text) {
+    this.loading.dismiss();
+
     let alert = this._alertCtrl.create({
       title: 'Echec',
       subTitle: text,

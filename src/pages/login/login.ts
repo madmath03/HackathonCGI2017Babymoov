@@ -17,13 +17,13 @@ import { AuthService } from '../../providers/auth-service';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  private loading: Loading;
+  private _loading: Loading;
   private registerCredentials = { email: '', password: '' };
 
   constructor(private nav: NavController, 
-    private auth: AuthService, 
-    private alertCtrl: AlertController, 
-    private loadingCtrl: LoadingController) {
+    private _auth: AuthService, 
+    private _alertCtrl: AlertController, 
+    private _loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -32,7 +32,7 @@ export class LoginPage {
 
   public login() {
     this.showLoading();
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
+    this._auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         this.nav.setRoot(DistributorsPage);
       } else {
@@ -45,17 +45,17 @@ export class LoginPage {
   }
 
   showLoading() {
-    this.loading = this.loadingCtrl.create({
+    this._loading = this._loadingCtrl.create({
       content: 'Patientez...',
       dismissOnPageChange: true
     });
-    this.loading.present();
+    this._loading.present();
   }
 
   showError(text) {
-    this.loading.dismiss();
+    this._loading.dismiss();
 
-    let alert = this.alertCtrl.create({
+    let alert = this._alertCtrl.create({
       title: 'Echec',
       subTitle: text,
       buttons: ['OK']

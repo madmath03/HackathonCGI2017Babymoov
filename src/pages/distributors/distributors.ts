@@ -1,33 +1,44 @@
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
 
 import { ProductsPage } from '../products/products';
+
+export interface Distributor {
+  distributor: string;
+  lattitude: number;
+  longitude: number;
+  address: string;
+  city: string;
+  postalCode: string;
+  photo: string;
+}
 
 @Component({
   selector: 'page-distributors',
   templateUrl: 'distributors.html'
 })
 export class DistributorsPage {
+  private loading: Loading;
   selectedItem: any;
-  posOptionsLat: any;
-  posOptionsLong: any;
-  items: Array<{ distributor: string, address: string, city: string, postalCode: string}>;
+  posOptionsLat: number;
+  posOptionsLong: number;
+  items: Array<Distributor>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private _http: Http) {
-    // If we navigated to this page, we will have an item available as a nav param
-
-
-
-    // get current position
-    geolocation.getCurrentPosition().then(pos => {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private _loadingCtrl: LoadingController,
+    private _geolocation: Geolocation,
+    private _http: Http) {
+    // Get current position
+    _geolocation.getCurrentPosition().then(pos => {
       this.posOptionsLat = pos.coords.latitude;
       this.posOptionsLong = pos.coords.longitude;
       console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
     });
 
-    const watch = geolocation.watchPosition().subscribe(pos => {
+    // Watch current position
+    const watch = _geolocation.watchPosition().subscribe(pos => {
       this.posOptionsLat = pos.coords.latitude;
       this.posOptionsLong = pos.coords.longitude;
       console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
@@ -36,19 +47,32 @@ export class DistributorsPage {
     // to stop watching
     watch.unsubscribe();
 
-    this.items = this.loadAllMagasins();
-
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DistributorsPage');
+
+    this.items = this.loadAllDistributors();
+  }
+
+  showLoading() {
+    this.loading = this._loadingCtrl.create({
+      content: 'Patientez...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
+  itemTapped(event, item: Distributor) {
+    // We're pushing to the products
     this.navCtrl.push(ProductsPage, {
       item: item
     });
   }
 
-  loadAllMagasins() {
-    console.log('Loading distributors...')
+  loadAllDistributors() {
+    this.showLoading();
+    console.log('Loading distributors...');
     var items = [];
 
     this._http.get('assets/data/distributor.json')
@@ -60,7 +84,7 @@ export class DistributorsPage {
         });
       },
       err => this.handleErrors(err),
-      () => console.log('Distributors load ended.')
+      () => { console.log('Distributors load ended.'); this.loading.dismiss(); }
       );
 
     return items;
@@ -80,8 +104,8 @@ export class DistributorsPage {
     // set val to the value of the searchbar
     let val = ev.target.value;
 
-    if(ev.cancelable){
-      this.items = this.loadAllMagasins();
+    if (ev.cancelable) {
+      this.items = this.loadAllDistributors();
     }
 
     // if the value is an empty string don't filter the items
@@ -89,8 +113,8 @@ export class DistributorsPage {
       this.items = this.items.filter((item) => {
         return (item.distributor.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.address.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.city.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.postalCode.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    }else if(val == ''){
-      this.items = this.loadAllMagasins();
+    } else if (val == '') {
+      this.items = this.loadAllDistributors();
     }
   }
 
